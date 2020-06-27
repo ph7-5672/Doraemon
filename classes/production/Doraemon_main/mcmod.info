@@ -1,0 +1,16 @@
+[
+{
+  "modid": "doraemon",
+  "name": "Doraemon",
+  "description": "Doraemon",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/ph7-5672/Doraemon",
+  "updateUrl": "https://github.com/ph7-5672/Doraemon",
+  "authorList": ["ph7"],
+  "credits": "The Forge and FML guys, for making this example",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
