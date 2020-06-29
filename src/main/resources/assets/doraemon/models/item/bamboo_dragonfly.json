@@ -1,6 +1,6 @@
 {
-  "parent":"item/handheld",
+  "parent":"item/generated",
   "textures":{
-    "layer0":"monopoly:items/bamboo_dragonfly"
+    "layer0":"doraemon:item/bamboo_dragonfly"
   }
 }

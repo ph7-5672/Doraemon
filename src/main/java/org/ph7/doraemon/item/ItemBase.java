@@ -12,6 +12,7 @@ public class ItemBase extends Item
     {
         this.setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
         this.setUnlocalizedName(name);
+        this.setCreativeTab(Reference.CREATIVE_TAB);
     }
 
 }

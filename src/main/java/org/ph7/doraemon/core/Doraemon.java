@@ -3,6 +3,7 @@ package org.ph7.doraemon.core;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.ph7.doraemon.common.Reference;
+import org.ph7.doraemon.init.ModBlocks;
 import org.ph7.doraemon.init.ModItems;
 
 @Mod(
@@ -19,6 +20,7 @@ public class Doraemon
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event)
     {
+        ModBlocks.init();
         ModItems.init();
     }
 

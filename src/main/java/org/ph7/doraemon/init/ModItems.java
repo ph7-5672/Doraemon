@@ -8,16 +8,16 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.ph7.doraemon.common.Reference;
-import org.ph7.doraemon.item.ItemBambooDragonfly;
+import org.ph7.doraemon.item.armor.ItemBambooDragonfly;
 
 public class ModItems
 {
 
-    public static ItemBambooDragonfly BAMBOO_DRAGONFLY;
+    public static ItemBambooDragonfly BAMBOO_DRAGONFLY = new ItemBambooDragonfly();
 
     public static void init()
     {
-        BAMBOO_DRAGONFLY = (ItemBambooDragonfly)register(new ItemBambooDragonfly());
+        register(BAMBOO_DRAGONFLY);
     }
 
     private static Item register(Item item)
