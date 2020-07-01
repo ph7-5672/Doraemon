@@ -34,8 +34,8 @@ public class ModelBambooDragonfly extends ModelBiped
     {
         float angleX = headPitch * 0.017453292F;
         float angleY = netHeadYaw * 0.017453292F;
-        this.shape1.rotateAngleX = this.shape2.rotateAngleX = angleX;
-        this.shape1.rotateAngleY = this.shape2.rotateAngleY = angleY;
+        this.shape2.rotateAngleX = angleX;
+        this.shape2.rotateAngleY = angleY;
         double[] dd = MathUtil.rotateX(-headPitch, 0F, -13.0F, 0F);
         dd = MathUtil.rotateY(-netHeadYaw, dd[0], dd[1], dd[2]);
         this.shape1.rotationPointX = (float) dd[0];
@@ -68,6 +68,7 @@ public class ModelBambooDragonfly extends ModelBiped
         this.shape1.render(scale);
         this.shape2.render(scale);
         GlStateManager.popMatrix();
+
 
     }
 
