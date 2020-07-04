@@ -11,16 +11,13 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.ph7.doraemon.block.BlockRandomDoor;
-import org.ph7.doraemon.common.IHasGui;
-import org.ph7.doraemon.common.Reference;
-import org.ph7.doraemon.core.ClientProxy;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ModBlocks
 {
     public static List<Block> BLOCKS = new ArrayList<>();
+    public static List<Item> ITEM_BLOCKS = new ArrayList<>();
 
     public static BlockRandomDoor RANDOM_DOOR = new BlockRandomDoor();
 
@@ -29,12 +26,12 @@ public class ModBlocks
         //register(RANDOM_DOOR);
     }
 
-    public static Block register(Block block)
+    public static void register(Block block)
     {
-        return register(block, null, null);
+        register(block, null, null);
     }
 
-    public static Block register(Block block, Class<? extends TileEntity> entityClass, TileEntitySpecialRenderer renderer)
+    public static void register(Block block, Class<? extends TileEntity> entityClass, TileEntitySpecialRenderer renderer)
     {
         ModelLoader.setCustomModelResourceLocation(
                 Item.getItemFromBlock(block),
@@ -44,6 +41,7 @@ public class ModBlocks
                 )
         );
         ForgeRegistries.BLOCKS.register(block);
+        BLOCKS.add(block);
 
         Item item = new ItemBlock(block).setRegistryName(block.getRegistryName());
         ModelLoader.setCustomModelResourceLocation(
@@ -54,15 +52,13 @@ public class ModBlocks
                 )
         );
         ForgeRegistries.ITEMS.register(item);
+        ITEM_BLOCKS.add(item);
 
         if (entityClass != null && renderer != null)
         {
             GameRegistry.registerTileEntity(entityClass, block.getRegistryName());
             ClientRegistry.bindTileEntitySpecialRenderer(entityClass, renderer);
         }
-
-        BLOCKS.add(block);
-        return block;
     }
 
 }

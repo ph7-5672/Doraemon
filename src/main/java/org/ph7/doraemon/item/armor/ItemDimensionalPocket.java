@@ -1,20 +1,25 @@
 package org.ph7.doraemon.item.armor;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.inventory.ItemStackHelper;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
+import org.ph7.doraemon.common.ItemUtil;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.core.ClientProxy;
 import org.ph7.doraemon.gui.inventory.InventoryDimensionalPocket;
+import org.ph7.doraemon.init.ModBlocks;
+import org.ph7.doraemon.init.ModItems;
 import org.ph7.doraemon.model.ModelDimensionalPocket;
 
 import javax.annotation.Nullable;
@@ -67,4 +72,16 @@ public class ItemDimensionalPocket extends ItemArmor
     {
         return new ModelDimensionalPocket();
     }
+
+   /* @Override
+    public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn)
+    {
+        NBTTagCompound tagCompound = stack.getTagCompound();
+        if (tagCompound == null) tagCompound = new NBTTagCompound();
+        ItemUtil.saveAllItems(tagCompound, ModItems.ITEMS);
+        ItemUtil.saveAllItems(tagCompound, ModBlocks.ITEM_BLOCKS);
+    }*/
+
+
+
 }

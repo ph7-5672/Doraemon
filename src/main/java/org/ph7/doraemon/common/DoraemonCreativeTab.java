@@ -14,6 +14,6 @@ public class DoraemonCreativeTab extends CreativeTabs
     @Override
     public ItemStack getTabIconItem()
     {
-        return new ItemStack(ModItems.BAMBOO_DRAGONFLY);
+        return new ItemStack(ModItems.DIMENSIONAL_POCKET);
     }
 }

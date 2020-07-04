@@ -27,10 +27,10 @@ public class ModItems
 
     public static void init()
     {
+        register(DIMENSIONAL_POCKET, "dimensional_pocket");
         register(BAMBOO_DRAGONFLY, "bamboo_dragonfly");
         register(FISHING_ROD_AUTO, "fishing_rod_auto");
         //register(AIR_GUN, "air_gun");
-        register(DIMENSIONAL_POCKET, "dimensional_pocket");
     }
 
     private static Item register(Item item, String name)

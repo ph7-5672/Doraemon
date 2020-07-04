@@ -16,10 +16,15 @@ import net.minecraft.world.storage.MapStorage;
 import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import org.ph7.doraemon.common.ItemUtil;
 import org.ph7.doraemon.common.Reference;
+import org.ph7.doraemon.init.ModBlocks;
+import org.ph7.doraemon.init.ModItems;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class InventoryDimensionalPocket implements IInventory
@@ -37,13 +42,20 @@ public class InventoryDimensionalPocket implements IInventory
     protected void saveAll(NBTTagCompound tagCompound)
     {
         if (tagCompound == null) tagCompound = new NBTTagCompound();
-        ItemStackHelper.saveAllItems(tagCompound, inventory);
+        tagCompound = ItemStackHelper.saveAllItems(tagCompound, inventory);
         this.storage.setTagCompound(tagCompound);
     }
 
     protected void loadAll(NBTTagCompound tagCompound)
     {
-        if (tagCompound == null) tagCompound = new NBTTagCompound();
+        if (tagCompound == null)
+        {
+            tagCompound = new NBTTagCompound();
+            ArrayList<Item> items = new ArrayList<>();
+            items.addAll(ModItems.ITEMS);
+            items.addAll(ModBlocks.ITEM_BLOCKS);
+            ItemUtil.saveAllItems(tagCompound, items);
+        }
         ItemStackHelper.loadAllItems(tagCompound, inventory);
     }
 

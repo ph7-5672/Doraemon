@@ -1,11 +1,14 @@
 package org.ph7.doraemon.common;
 
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ItemStackHelper;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.NonNullList;
+import java.util.List;
 
 public class ItemUtil
 {
@@ -102,6 +105,16 @@ public class ItemUtil
         int i = getSlotFor(container, stack, start, end);
         if (i < 0 && !stack.isEmpty()) return getBestHotbarSlot(container, ItemStack.EMPTY, start, end);
         return i;
+    }
+
+    public static NBTTagCompound saveAllItems(NBTTagCompound tag, List<Item> items)
+    {
+        NonNullList<ItemStack> itemStacks = NonNullList.create();
+        for (Item item : items)
+        {
+            item.getSubItems(item.getCreativeTab(), itemStacks);
+        }
+        return ItemStackHelper.saveAllItems(tag, itemStacks);
     }
 
 }

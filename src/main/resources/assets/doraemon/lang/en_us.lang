@@ -3,3 +3,5 @@ item.fishing_rod_auto.name=Fishing Rod(Auto)
 item.dimensional_pocket.name=Four Dimensional Pocket
 
 InventoryDimensionalPocket=Four Dimensional Pocket
+
+itemGroup.doraemon=Doraemon
