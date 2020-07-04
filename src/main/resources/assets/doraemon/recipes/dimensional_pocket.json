@@ -3,19 +3,19 @@
   "pattern":
   [
     "xxx",
-    " x ",
     " x "
   ],
   "key":
   {
     "x":
     {
-      "item": "minecraft:stick"
+      "item": "minecraft:wool",
+      "data": 0
     }
   },
   "result":
   {
-    "item": "doraemon:bamboo_dragonfly",
+    "item": "doraemon:dimensional_pocket",
     "count": 1
   }
 }
