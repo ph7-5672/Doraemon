@@ -11,6 +11,9 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.ph7.doraemon.block.BlockRandomDoor;
+import org.ph7.doraemon.common.IHasGui;
+import org.ph7.doraemon.common.Reference;
+import org.ph7.doraemon.core.ClientProxy;
 
 import java.util.ArrayList;
 import java.util.List;

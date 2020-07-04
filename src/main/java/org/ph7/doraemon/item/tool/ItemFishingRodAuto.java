@@ -21,8 +21,6 @@ public class ItemFishingRodAuto extends ItemFishingRod
     public ItemFishingRodAuto()
     {
         super();
-        this.setRegistryName(Reference.MOD_ID, "fishing_rod_auto");
-        this.setUnlocalizedName("fishing_rod_auto");
         this.delay = 5;
     }
 

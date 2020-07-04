@@ -1,18 +1,15 @@
 package org.ph7.doraemon.item.armor;
 
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import org.ph7.doraemon.common.Reference;
-import org.ph7.doraemon.item.ItemBase;
 import org.ph7.doraemon.model.ModelBambooDragonfly;
 
 import javax.annotation.Nullable;
@@ -20,11 +17,11 @@ import javax.annotation.Nullable;
 /**
  * 竹蜻蜓
  */
-public class ItemBambooDragonfly extends ArmorBase
+public class ItemBambooDragonfly extends ItemArmor
 {
     public ItemBambooDragonfly()
     {
-        super("bamboo_dragonfly", ArmorMaterial.IRON, 0, EntityEquipmentSlot.HEAD);
+        super(ArmorMaterial.IRON, 0, EntityEquipmentSlot.HEAD);
     }
 
     @Override
