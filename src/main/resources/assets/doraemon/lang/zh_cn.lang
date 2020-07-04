@@ -1,2 +1,5 @@
 item.bamboo_dragonfly.name=竹蜻蜓
 item.fishing_rod_auto.name=自动钓鱼竿
+item.dimensional_pocket.name=四次元口袋
+
+InventoryDimensionalPocket=四次元口袋

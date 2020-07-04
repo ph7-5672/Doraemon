@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.handler.ClientEventHandler;
+import org.ph7.doraemon.handler.CommonEventHandler;
 import org.ph7.doraemon.handler.GuiHandler;
 import org.ph7.doraemon.init.ModBlocks;
 import org.ph7.doraemon.init.ModItems;
@@ -38,6 +39,7 @@ public class CommonProxy
     public void registerEventHandler()
     {
         MinecraftForge.EVENT_BUS.register(new ClientEventHandler());
+        MinecraftForge.EVENT_BUS.register(new CommonEventHandler());
     }
 
     public void registerGuiHandler()

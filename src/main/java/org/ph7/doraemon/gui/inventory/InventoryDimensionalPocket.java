@@ -22,16 +22,29 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 
-public class InventoryDimensionalPocket extends WorldSavedData implements IInventory
+public class InventoryDimensionalPocket implements IInventory
 {
-    protected NonNullList<ItemStack> inventory = NonNullList.withSize(27, ItemStack.EMPTY);
-    public static final String DATA_NAME = Reference.MOD_ID + ":dimensional_pocket";
+    protected NonNullList<ItemStack> inventory;
+    protected ItemStack storage;
 
-
-    public InventoryDimensionalPocket()
+    public InventoryDimensionalPocket(ItemStack storage, int size)
     {
-        super(DATA_NAME);
-        this.markDirty();
+        this.storage = storage;
+        this.inventory = NonNullList.withSize(size, ItemStack.EMPTY);
+        this.loadAll(storage.getTagCompound());
+    }
+
+    protected void saveAll(NBTTagCompound tagCompound)
+    {
+        if (tagCompound == null) tagCompound = new NBTTagCompound();
+        ItemStackHelper.saveAllItems(tagCompound, inventory);
+        this.storage.setTagCompound(tagCompound);
+    }
+
+    protected void loadAll(NBTTagCompound tagCompound)
+    {
+        if (tagCompound == null) tagCompound = new NBTTagCompound();
+        ItemStackHelper.loadAllItems(tagCompound, inventory);
     }
 
     @Override
@@ -109,7 +122,7 @@ public class InventoryDimensionalPocket extends WorldSavedData implements IInven
     @Override
     public void markDirty()
     {
-        super.markDirty();
+        this.saveAll(this.storage.getTagCompound());
     }
 
     @Override
@@ -176,32 +189,6 @@ public class InventoryDimensionalPocket extends WorldSavedData implements IInven
     public ITextComponent getDisplayName()
     {
         return (this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName(), new Object[0]));
-    }
-
-
-    @Override
-    public void readFromNBT(NBTTagCompound nbt)
-    {
-        ItemStackHelper.loadAllItems(nbt, inventory);
-    }
-
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound nbt)
-    {
-        ItemStackHelper.saveAllItems(nbt, inventory);
-        return nbt;
-    }
-
-    public static InventoryDimensionalPocket getInstance(World world)
-    {
-        MapStorage storage = world.getPerWorldStorage();
-        InventoryDimensionalPocket instance = (InventoryDimensionalPocket) storage.getOrLoadData(InventoryDimensionalPocket.class, DATA_NAME);
-        if (instance == null)
-        {
-            instance = new InventoryDimensionalPocket();
-            storage.setData(DATA_NAME, instance);
-        }
-        return instance;
     }
 
 

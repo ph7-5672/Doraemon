@@ -7,9 +7,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import org.ph7.doraemon.common.IHasGui;
 import org.ph7.doraemon.common.Reference;
-import org.ph7.doraemon.core.ClientProxy;
 import org.ph7.doraemon.handler.ItemStackRenderer;
 import org.ph7.doraemon.item.armor.ItemBambooDragonfly;
 import org.ph7.doraemon.item.armor.ItemDimensionalPocket;
@@ -31,7 +29,7 @@ public class ModItems
     {
         register(BAMBOO_DRAGONFLY, "bamboo_dragonfly");
         register(FISHING_ROD_AUTO, "fishing_rod_auto");
-        register(AIR_GUN, "air_gun");
+        //register(AIR_GUN, "air_gun");
         register(DIMENSIONAL_POCKET, "dimensional_pocket");
     }
 
