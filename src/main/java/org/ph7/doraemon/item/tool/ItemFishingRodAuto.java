@@ -1,5 +1,7 @@
 package org.ph7.doraemon.item.tool;
 
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFishHook;
@@ -8,81 +10,61 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import org.ph7.doraemon.common.ItemUtil;
 import org.ph7.doraemon.common.Reference;
+import org.ph7.doraemon.core.Doraemon;
 
 import java.lang.reflect.Field;
 
 public class ItemFishingRodAuto extends ItemFishingRod
 {
-    private int delay;
-    private int ticks;
-
     public ItemFishingRodAuto()
     {
         super();
-        this.delay = 5;
-    }
-
-    public void setFlag(ItemStack stack, boolean flag)
-    {
-        NBTTagCompound tag = new NBTTagCompound();
-        tag.setBoolean("flag", flag);
-        stack.setTagCompound(tag);
-    }
-
-    public boolean getFlag(ItemStack stack)
-    {
-        NBTTagCompound tag = stack.getTagCompound();
-        return tag != null && tag.getBoolean("flag");
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
-        ItemStack stack = playerIn.getHeldItem(handIn);
-        this.setFlag(stack, playerIn.fishEntity == null);
+        ItemUtil.setTagBoolean(playerIn.getHeldItem(handIn), "auto_fish", playerIn.fishEntity == null);
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected)
     {
-        if (worldIn.isRemote)
-        {
-            return;
-        }
+        if (worldIn.isRemote) return;
 
-        if (entityIn instanceof EntityPlayer && isSelected)
+        if (itemSlot == 0 || isSelected)
         {
-            if (this.getFlag(stack))
+            if (entityIn instanceof EntityPlayer)
             {
-                EntityPlayer player = (EntityPlayer) entityIn;
-                EntityFishHook fishEntity = player.fishEntity;
-                try
+                if (ItemUtil.getTagBoolean(stack, "auto_fish"))
                 {
+                    EntityPlayer player = (EntityPlayer) entityIn;
+                    EntityFishHook fishEntity = player.fishEntity;
                     if (fishEntity != null)
                     {
-                        Field field = EntityFishHook.class.getDeclaredField("ticksCatchable");
-                        field.setAccessible(true);
-                        Object o = field.get(fishEntity);
-                        if (Integer.valueOf(o.toString()) > 0)
+                        if (fishEntity.isInWater() && fishEntity.motionY < -0.4F * 0.6F && fishEntity.motionY >= -0.4F)
                         {
                             super.onItemRightClick(worldIn, player, player.getActiveHand());
+                            ItemUtil.setTagInt(stack, "auto_fish_tick", 0);
                         }
                     }
                     else
                     {
-                        ticks++;
-                        if (ticks >= delay)
+                        int tick = ItemUtil.getTagInt(stack, "auto_fish_tick");
+                        if (tick > 10)
                         {
-                            ticks = 0;
                             super.onItemRightClick(worldIn, player, player.getActiveHand());
+                            tick = 0;
                         }
+                        ItemUtil.setTagInt(stack, "auto_fish_tick", ++tick);
                     }
-                }
-                catch (Exception e)
-                {
+
                 }
             }
         }

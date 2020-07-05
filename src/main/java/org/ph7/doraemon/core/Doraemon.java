@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import org.apache.logging.log4j.Logger;
 import org.ph7.doraemon.common.Reference;
 
 @Mod(
@@ -19,6 +20,8 @@ public class Doraemon
     @Mod.Instance("doraemon")
     public static Doraemon instance;
 
+    public static Logger logger;
+
     @SidedProxy(clientSide = "org.ph7.doraemon.core.ClientProxy", serverSide = "org.ph7.doraemon.core.CommonProxy")
     public static CommonProxy proxy;
 
@@ -28,6 +31,7 @@ public class Doraemon
     public static void preInit(FMLPreInitializationEvent event)
     {
         proxy.preInit(event);
+        logger = event.getModLog();
     }
 
 }
