@@ -29,9 +29,11 @@ public class ItemFishingRodAuto extends ItemFishingRod
     {
         if (worldIn.isRemote) return;
 
-        if (itemSlot == 0 || isSelected)
+        if (entityIn instanceof EntityPlayer)
         {
-            if (entityIn instanceof EntityPlayer)
+            ItemStack stack1 = ((EntityPlayer) entityIn).getHeldItem(EnumHand.MAIN_HAND);
+            ItemStack stack2 = ((EntityPlayer) entityIn).getHeldItem(EnumHand.OFF_HAND);
+            if (stack1.getItem() instanceof ItemFishingRodAuto || stack2.getItem() instanceof ItemFishingRodAuto)
             {
                 if (ItemUtil.getTagBoolean(stack, "auto_fish"))
                 {
@@ -57,6 +59,10 @@ public class ItemFishingRodAuto extends ItemFishingRod
                     }
 
                 }
+            }
+            else
+            {
+                ItemUtil.setTagBoolean(stack, "auto_fish", false);
             }
         }
     }
