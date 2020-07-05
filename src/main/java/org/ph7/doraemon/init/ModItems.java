@@ -13,6 +13,7 @@ import org.ph7.doraemon.item.armor.ItemBambooDragonfly;
 import org.ph7.doraemon.item.armor.ItemDimensionalPocket;
 import org.ph7.doraemon.item.tool.ItemFishingRodAuto;
 import org.ph7.doraemon.item.weapon.ItemAirGun;
+import org.ph7.doraemon.item.weapon.ItemDictatorButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,16 +21,18 @@ import java.util.List;
 public class ModItems
 {
     public static List<Item> ITEMS = new ArrayList<>();
+    public static ItemDimensionalPocket DIMENSIONAL_POCKET = new ItemDimensionalPocket();
     public static ItemBambooDragonfly BAMBOO_DRAGONFLY = new ItemBambooDragonfly();
     public static ItemFishingRodAuto FISHING_ROD_AUTO = new ItemFishingRodAuto();
     public static ItemAirGun AIR_GUN = new ItemAirGun();
-    public static ItemDimensionalPocket DIMENSIONAL_POCKET = new ItemDimensionalPocket();
+    public static ItemDictatorButton DICTATOR_BUTTON = new ItemDictatorButton();
 
     public static void init()
     {
         register(DIMENSIONAL_POCKET, "dimensional_pocket");
         register(BAMBOO_DRAGONFLY, "bamboo_dragonfly");
         register(FISHING_ROD_AUTO, "fishing_rod_auto");
+        register(DICTATOR_BUTTON, "dictator_button");
         //register(AIR_GUN, "air_gun");
     }
 

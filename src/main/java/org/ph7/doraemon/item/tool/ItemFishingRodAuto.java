@@ -1,23 +1,14 @@
 package org.ph7.doraemon.item.tool;
 
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.item.ItemFishingRod;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.ph7.doraemon.common.ItemUtil;
-import org.ph7.doraemon.common.Reference;
-import org.ph7.doraemon.core.Doraemon;
-
-import java.lang.reflect.Field;
 
 public class ItemFishingRodAuto extends ItemFishingRod
 {
