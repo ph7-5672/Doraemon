@@ -1,5 +1,6 @@
 package org.ph7.doraemon.item.tool;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFishHook;
@@ -7,8 +8,12 @@ import net.minecraft.item.ItemFishingRod;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import org.ph7.doraemon.common.ItemUtil;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemFishingRodAuto extends ItemFishingRod
 {
@@ -67,5 +72,9 @@ public class ItemFishingRodAuto extends ItemFishingRod
         }
     }
 
-
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+    {
+        tooltip.add(new TextComponentTranslation(this.getUnlocalizedName() + ".desc").getUnformattedComponentText());
+    }
 }

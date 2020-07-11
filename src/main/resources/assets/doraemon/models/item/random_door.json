@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
-  "textures": {
-    "layer0": "items/door_iron"
+  "textures":{
+    "layer0":"doraemon:item/random_door"
   }
 }

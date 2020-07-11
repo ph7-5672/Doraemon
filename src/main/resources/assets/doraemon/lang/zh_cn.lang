@@ -2,7 +2,20 @@ item.bamboo_dragonfly.name=竹蜻蜓
 item.fishing_rod_auto.name=自动钓鱼竿
 item.dimensional_pocket.name=四次元口袋
 item.dictator_button.name=独裁者按钮
+item.love_arrow.name=爱神之箭
+item.random_door.name=任意门
+
+item.bamboo_dragonfly.desc=装备后获得飞行能力
+item.fishing_rod_auto.desc=右键自动钓鱼，可附魔
+item.dimensional_pocket.desc=存取道具
+item.dictator_button.desc=右键使实体消失
+item.love_arrow.desc=使动物陷入爱河
 
 InventoryDimensionalPocket=四次元口袋
 
 itemGroup.doraemon=哆啦A梦
+
+random_door.pos.set=设置传送位置
+random_door.pos.error=设置失败，请输入纯数字
+random_door.pos.save=保存
+random_door.pos.cannotTrans=该位置无法传送

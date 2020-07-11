@@ -1,7 +1,6 @@
-package org.ph7.doraemon.item.weapon;
+package org.ph7.doraemon.item.tool;
 
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,27 +13,13 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-/**
- * 独裁者按钮
- */
-public class ItemDictatorButton extends Item
+public class ItemLightShrink extends Item
 {
 
-    public ItemDictatorButton()
+    public ItemLightShrink()
     {
+        super();
         this.setMaxStackSize(1);
-    }
-
-    @Override
-    public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand)
-    {
-        if (target.world.isRemote)
-        {
-            return false;
-        }
-        playerIn.swingArm(hand);
-        target.setDead();
-        return true;
     }
 
     @Override
@@ -43,9 +28,29 @@ public class ItemDictatorButton extends Item
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
     }
 
+    /*@Override
+    public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand)
+    {
+        if (target.world.isRemote)
+        {
+            return false;
+        }
+        playerIn.swingArm(hand);
+        target.width /= 2;
+        target.height /= 2;
+        ModelBase model = EntityUtil.getLivingModel(target.getClass());
+        List<ModelRenderer> boxList = model.boxList;
+        for (ModelRenderer renderer : boxList)
+        {
+
+        }
+        return true;
+    }*/
+
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         tooltip.add(new TextComponentTranslation(this.getUnlocalizedName() + ".desc").getUnformattedComponentText());
     }
+
 }

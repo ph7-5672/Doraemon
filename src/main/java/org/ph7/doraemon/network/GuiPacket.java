@@ -55,18 +55,16 @@ public class GuiPacket implements IMessage
                 	int posZ = player.getPosition().getZ();
                 	World world = player.world;
 
-					player.openGui(Doraemon.instance, message.id, world, posX, posY, posZ);
-
-					/*final WorldServer playerWorldServer = sendingPlayer.getServerWorld();
+					final WorldServer playerWorldServer = sendingPlayer.getServerWorld();
 
 					playerWorldServer.addScheduledTask(new Runnable()
 					{
 						@Override
 						public void run()
 						{
-
+							player.openGui(Doraemon.instance, message.id, world, posX, posY, posZ);
 						}
-					});*/
+					});
                 }
     		}
             return null;

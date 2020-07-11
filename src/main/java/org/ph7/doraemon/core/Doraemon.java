@@ -1,8 +1,11 @@
 package org.ph7.doraemon.core;
 
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -27,11 +30,24 @@ public class Doraemon
 
     public static SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
 
+
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event)
     {
         proxy.preInit(event);
         logger = event.getModLog();
+    }
+
+    @Mod.EventHandler
+    public static void init(FMLInitializationEvent event)
+    {
+        proxy.init(event);
+    }
+
+    @Mod.EventHandler
+    public static void postInit(FMLPostInitializationEvent event)
+    {
+        proxy.postInit(event);
     }
 
 }

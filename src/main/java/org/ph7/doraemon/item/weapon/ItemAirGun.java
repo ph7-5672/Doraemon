@@ -1,5 +1,6 @@
 package org.ph7.doraemon.item.weapon;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySnowball;
@@ -10,10 +11,14 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.ph7.doraemon.entity.EntityAirBullet;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 
 public class ItemAirGun extends Item
@@ -70,5 +75,11 @@ public class ItemAirGun extends Item
         ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onArrowNock(itemstack, worldIn, player, handIn, true);
         if (ret != null) return ret;
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+    {
+        tooltip.add(new TextComponentTranslation(this.getUnlocalizedName() + ".desc").getUnformattedComponentText());
     }
 }

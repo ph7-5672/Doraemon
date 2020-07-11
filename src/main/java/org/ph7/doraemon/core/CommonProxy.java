@@ -1,27 +1,37 @@
 package org.ph7.doraemon.core;
 
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import org.ph7.doraemon.capability.blockpos.BlockPosCapabilityImpl;
+import org.ph7.doraemon.capability.blockpos.BlockPosStorage;
+import org.ph7.doraemon.capability.blockpos.IBlockPosCapability;
+import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.handler.ClientEventHandler;
 import org.ph7.doraemon.handler.CommonEventHandler;
 import org.ph7.doraemon.handler.GuiHandler;
-import org.ph7.doraemon.init.ModBlocks;
-import org.ph7.doraemon.init.ModItems;
 import org.ph7.doraemon.network.GuiPacket;
 
 public class CommonProxy
 {
     public void preInit(FMLPreInitializationEvent event)
     {
-        ModBlocks.init();
-        ModItems.init();
         registerEventHandler();
         registerGuiHandler();
         registerPackets();
+        registerCapabilities();
     }
 
     public void init(FMLInitializationEvent event)
@@ -48,5 +58,28 @@ public class CommonProxy
     public void registerPackets()
     {
         Doraemon.NETWORK.registerMessage(GuiPacket.Handler.class, GuiPacket.class, 0, Side.SERVER);
+    }
+
+    public void registerCapabilities()
+    {
+        CapabilityManager.INSTANCE.register(IBlockPosCapability.class, new BlockPosStorage(), BlockPosCapabilityImpl::create);
+    }
+
+    public void setModelResource(Block block)
+    {
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+    }
+
+    public void setModelResource(Item item)
+    {
+        NonNullList<ItemStack> list = NonNullList.create();
+        item.getSubItems(item.getCreativeTab(), list);
+
+        for (ItemStack stack : list)
+        {
+            String replace = item instanceof ItemBlock ? "tile." : "item.";
+            ResourceLocation location = new ResourceLocation(Reference.MOD_ID, stack.getUnlocalizedName().replace(replace, ""));
+            ModelLoader.setCustomModelResourceLocation(item, stack.getMetadata(), new ModelResourceLocation(location, "inventory"));
+        }
     }
 }

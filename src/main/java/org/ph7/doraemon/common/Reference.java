@@ -15,7 +15,6 @@ public class Reference
     public static final String KEYS_CATEGORY = "keys.doraemon.category";
 
     //=================ResourceLocation==============//
-    public static final ResourceLocation GUI_DIMENSIONAL_POCKET_RESOURCE = new ResourceLocation("textures/gui/container/shulker_box.png");
-
+    public static final ResourceLocation BLOCK_POS_CAP = new ResourceLocation(Reference.MOD_ID, "block_pos");
 
 }

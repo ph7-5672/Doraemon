@@ -1,7 +1,7 @@
 {
-    "parent": "block/random_door_bottom_rh",
+    "parent": "block/door_bottom",
     "textures": {
-        "bottom": "blocks/door_iron_lower",
-        "top": "blocks/door_iron_upper"
+        "bottom": "doraemon:block/random_door_bottom",
+        "top": "doraemon:block/random_door_top"
     }
 }

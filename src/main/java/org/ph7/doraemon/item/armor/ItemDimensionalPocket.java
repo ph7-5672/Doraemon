@@ -2,6 +2,7 @@ package org.ph7.doraemon.item.armor;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.*;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import org.ph7.doraemon.common.ItemUtil;
 import org.ph7.doraemon.common.Reference;
@@ -23,6 +25,7 @@ import org.ph7.doraemon.init.ModItems;
 import org.ph7.doraemon.model.ModelDimensionalPocket;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemDimensionalPocket extends ItemArmor
 {
@@ -73,14 +76,11 @@ public class ItemDimensionalPocket extends ItemArmor
         return new ModelDimensionalPocket();
     }
 
-   /* @Override
-    public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn)
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-        NBTTagCompound tagCompound = stack.getTagCompound();
-        if (tagCompound == null) tagCompound = new NBTTagCompound();
-        ItemUtil.saveAllItems(tagCompound, ModItems.ITEMS);
-        ItemUtil.saveAllItems(tagCompound, ModBlocks.ITEM_BLOCKS);
-    }*/
+        tooltip.add(new TextComponentTranslation(this.getUnlocalizedName() + ".desc").getUnformattedComponentText());
+    }
 
 
 
