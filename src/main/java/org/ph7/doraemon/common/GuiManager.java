@@ -8,7 +8,6 @@ import net.minecraft.world.World;
 import org.ph7.doraemon.core.Doraemon;
 import org.ph7.doraemon.entity.EntityRandomDoor;
 import org.ph7.doraemon.gui.GuiRandomDoor;
-import org.ph7.doraemon.gui.container.ContainerRandomDoor;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -21,7 +20,7 @@ public class GuiManager
     {
         GUI_MAP.put(
                 ((p,w,x,y,z) -> new GuiRandomDoor((EntityRandomDoor) w.getEntityByID(x))),
-                ((p,w,x,y,z) -> new ContainerRandomDoor())
+                ((p,w,x,y,z) -> null)
         );
     }
 

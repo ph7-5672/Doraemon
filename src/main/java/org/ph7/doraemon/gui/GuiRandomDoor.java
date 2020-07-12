@@ -127,7 +127,9 @@ public class GuiRandomDoor extends GuiScreen
                     {
                         //dataManager属于server side, gui中调用需要数据同步
                         Doraemon.NETWORK.sendToServer(new TransPacket(randomDoor.getEntityId(), x, y, z));
-
+                        /*randomDoor.getServer().addScheduledTask(() ->
+                        {
+                        });*/
                         this.mc.displayGuiScreen((GuiScreen)null);
 
                         if (this.mc.currentScreen == null)

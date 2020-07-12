@@ -87,7 +87,18 @@ public class GuiPacket implements IMessage
     			
     			if(ctx.side.isServer() && player != null)
                 { 
-					GuiManager.openGui(GuiRandomDoor.class, player, player.world, message.x, message.y, message.z);
+                	World world = player.world;
+
+					final WorldServer playerWorldServer = sendingPlayer.getServerWorld();
+
+					playerWorldServer.addScheduledTask(new Runnable()
+					{
+						@Override
+						public void run()
+						{
+							GuiManager.openGui(GuiRandomDoor.class, player, player.world, message.x, message.y, message.z);
+						}
+					});
                 }
     		}
             return null;
