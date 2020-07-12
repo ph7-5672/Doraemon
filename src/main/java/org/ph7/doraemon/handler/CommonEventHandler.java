@@ -1,8 +1,8 @@
 package org.ph7.doraemon.handler;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
-import org.ph7.doraemon.capability.blockpos.BlockPosProvider;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.core.Doraemon;
 import org.ph7.doraemon.entity.EntityRandomDoor;
@@ -77,12 +76,8 @@ public class CommonEventHandler
 
 
     @SubscribeEvent
-    public void attachCapability(AttachCapabilitiesEvent<TileEntity> event)
+    public void attachCapability(AttachCapabilitiesEvent<Entity> event)
     {
-        if (event.getObject() instanceof TileEntity)
-        {
-            event.addCapability(Reference.BLOCK_POS_CAP, new BlockPosProvider());
-        }
     }
 
 

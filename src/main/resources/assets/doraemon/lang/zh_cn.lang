@@ -9,7 +9,8 @@ item.bamboo_dragonfly.desc=装备后获得飞行能力
 item.fishing_rod_auto.desc=右键自动钓鱼，可附魔
 item.dimensional_pocket.desc=存取道具
 item.dictator_button.desc=右键使实体消失
-item.love_arrow.desc=使动物陷入爱河
+item.love_arrow.desc=让动物陷入爱河
+item.random_door.desc=shift+右键填写坐标，右键打开门走入后传送到指定坐标。注意：只能传送到已加载的空地。
 
 InventoryDimensionalPocket=四次元口袋
 

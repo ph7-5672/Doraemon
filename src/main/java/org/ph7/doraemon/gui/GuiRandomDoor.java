@@ -6,15 +6,12 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.ph7.doraemon.capability.blockpos.BlockPosProvider;
-import org.ph7.doraemon.capability.blockpos.IBlockPosCapability;
+import net.minecraft.world.chunk.Chunk;
+import org.ph7.doraemon.core.Doraemon;
 import org.ph7.doraemon.entity.EntityRandomDoor;
-import org.ph7.doraemon.init.ModBlocks;
-import org.ph7.doraemon.tile.TileEntityRandomDoor;
+import org.ph7.doraemon.network.TransPacket;
 
 import java.io.IOException;
 
@@ -85,7 +82,11 @@ public class GuiRandomDoor extends GuiScreen
     {
         super.keyTyped(typedChar, keyCode);
 
-        if (this.posXFiled.isFocused())
+        if (keyCode == 28) // enter
+        {
+            this.actionPerformed(this.buttonList.get(0));
+        }
+        else if (this.posXFiled.isFocused())
         {
             this.posXFiled.textboxKeyTyped(typedChar, keyCode);
         }
@@ -120,9 +121,12 @@ public class GuiRandomDoor extends GuiScreen
                     World world = randomDoor.getEntityWorld();
                     IBlockState state1 = world.getBlockState(blockPos);
                     IBlockState state2 = world.getBlockState(blockPos.up());
-                    if (state1.getMaterial() == Material.AIR && state2.getMaterial() == Material.AIR)
+                    Chunk chunk = world.getChunkFromBlockCoords(blockPos);
+
+                    if (chunk.isLoaded() && state1.getMaterial() == Material.AIR && state2.getMaterial() == Material.AIR)
                     {
-                        randomDoor.setTrans(x, y, z);
+                        //dataManager属于server side, gui中调用需要数据同步
+                        Doraemon.NETWORK.sendToServer(new TransPacket(randomDoor.getEntityId(), x, y, z));
 
                         this.mc.displayGuiScreen((GuiScreen)null);
 
@@ -131,17 +135,6 @@ public class GuiRandomDoor extends GuiScreen
                             this.mc.setIngameFocus();
                         }
                     }
-                    /*if ((te.getWorld().getTileEntity(blockPos) instanceof TileEntityRandomDoor) || ModBlocks.RANDOM_DOOR.canPlaceBlockAt(te.getWorld(), blockPos))
-                    {
-                        IBlockPosCapability capability = te.getCapability(BlockPosProvider.BLOCK_POS_CAP, null);
-                        capability.setBlockPos(blockPos);
-                        this.mc.displayGuiScreen((GuiScreen)null);
-
-                        if (this.mc.currentScreen == null)
-                        {
-                            this.mc.setIngameFocus();
-                        }
-                    }*/
                     else
                     {
                         this.cannotTrans = true;

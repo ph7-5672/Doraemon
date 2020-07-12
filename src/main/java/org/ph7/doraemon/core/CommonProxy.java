@@ -15,14 +15,12 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import org.ph7.doraemon.capability.blockpos.BlockPosCapabilityImpl;
-import org.ph7.doraemon.capability.blockpos.BlockPosStorage;
-import org.ph7.doraemon.capability.blockpos.IBlockPosCapability;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.handler.ClientEventHandler;
 import org.ph7.doraemon.handler.CommonEventHandler;
 import org.ph7.doraemon.handler.GuiHandler;
 import org.ph7.doraemon.network.GuiPacket;
+import org.ph7.doraemon.network.TransPacket;
 
 public class CommonProxy
 {
@@ -58,11 +56,12 @@ public class CommonProxy
     public void registerPackets()
     {
         Doraemon.NETWORK.registerMessage(GuiPacket.Handler.class, GuiPacket.class, 0, Side.SERVER);
+        Doraemon.NETWORK.registerMessage(TransPacket.Handler.class, TransPacket.class, 0, Side.SERVER);
     }
 
     public void registerCapabilities()
     {
-        CapabilityManager.INSTANCE.register(IBlockPosCapability.class, new BlockPosStorage(), BlockPosCapabilityImpl::create);
+        //CapabilityManager.INSTANCE.register(IRandomDoorCapability.class, new RandomDoorStorage(), RandomDoorCapabilityImpl::create);
     }
 
     public void setModelResource(Block block)

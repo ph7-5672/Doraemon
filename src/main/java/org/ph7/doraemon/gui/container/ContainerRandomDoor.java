@@ -1,0 +1,20 @@
+package org.ph7.doraemon.gui.container;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
+
+public class ContainerRandomDoor extends Container
+{
+
+    public ContainerRandomDoor()
+    {
+    }
+
+    @Override
+    public boolean canInteractWith(EntityPlayer playerIn)
+    {
+        return true;
+    }
+
+
+}

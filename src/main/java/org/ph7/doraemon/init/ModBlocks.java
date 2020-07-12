@@ -8,11 +8,8 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import org.ph7.doraemon.block.BlockRandomDoor;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.handler.ItemStackRenderer;
-import org.ph7.doraemon.render.tile.TileEntityRandomDoorRenderer;
-import org.ph7.doraemon.tile.TileEntityRandomDoor;
 import java.util.List;
 
 public class ModBlocks
@@ -20,11 +17,9 @@ public class ModBlocks
     public static List<Block> BLOCKS = Lists.newArrayList();
     public static List<Item> ITEM_BLOCKS = Lists.newArrayList();
 
-    public static BlockRandomDoor RANDOM_DOOR = new BlockRandomDoor();
 
     static
     {
-        register("random_door", RANDOM_DOOR, TileEntityRandomDoor.class, new TileEntityRandomDoorRenderer(), false);
     }
 
 

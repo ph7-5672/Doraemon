@@ -13,8 +13,10 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.ph7.doraemon.common.GuiManager;
+import org.ph7.doraemon.core.Doraemon;
 import org.ph7.doraemon.gui.GuiRandomDoor;
 import org.ph7.doraemon.init.ModItems;
+import org.ph7.doraemon.network.GuiPacket;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -33,12 +35,6 @@ public class EntityRandomDoor extends Entity
         super(worldIn);
         this.preventEntitySpawning = true;
         this.setSize(0.6F, 2.0F);
-    }
-
-    public EntityRandomDoor(World world, BlockPos blockPos)
-    {
-        this(world);
-        this.setPosition(blockPos.getX(), blockPos.getY(), blockPos.getZ());
     }
 
     public EntityRandomDoor(World world, boolean isOpen)
@@ -70,10 +66,9 @@ public class EntityRandomDoor extends Entity
     protected void entityInit()
     {
         this.dataManager.register(OPEN, Boolean.FALSE);
-        BlockPos pos = this.getPosition();
-        this.dataManager.register(TRANS[0], pos.getX());
-        this.dataManager.register(TRANS[1], pos.getY());
-        this.dataManager.register(TRANS[2], pos.getZ());
+        this.dataManager.register(TRANS[0], 0);
+        this.dataManager.register(TRANS[1], 0);
+        this.dataManager.register(TRANS[2], 0);
 
         //this.setEntityBoundingBox(new AxisAlignedBB(0, 0, 0, 1D, 1D, 1D));
     }
@@ -166,14 +161,16 @@ public class EntityRandomDoor extends Entity
     {
         super.onUpdate();
         List<Entity> list = this.world.getEntitiesInAABBexcluding(this, this.getEntityBoundingBox(), EntitySelectors.getTeamCollisionPredicate(this));
+        BlockPos trans = this.getTrans();
         if (!list.isEmpty())
         {
-            BlockPos trans = this.getTrans();
+
             if (!trans.equals(this.getPosition()) && this.isOpen())
             {
                 for (Entity entity : list)
                 {
                     entity.setPosition(trans.getX(), trans.getY(), trans.getZ());
+                    //entity.addedToChunk
                 }
             }
         }
@@ -184,6 +181,7 @@ public class EntityRandomDoor extends Entity
     {
         if (player.isSneaking())
         {
+            //Doraemon.NETWORK.sendToServer(new GuiPacket(this.getEntityId(), 0, 0));
             GuiManager.openGui(GuiRandomDoor.class, player, player.world, this.getEntityId(), 0, 0);
         }
         else
