@@ -8,7 +8,7 @@ public class Reference
     //===================Mod相关======================//
     public static final String MOD_ID = "doraemon";
     public static final String MOD_NAME = "Doraemon";
-    public static final String MOD_VERSION = "1.0.0";
+    public static final String MOD_VERSION = "1.1.0";
     public static final DoraemonCreativeTab CREATIVE_TAB = new DoraemonCreativeTab();
 
     public static final String KEYS_INVENTORY = "keys.doraemon.inventory";
