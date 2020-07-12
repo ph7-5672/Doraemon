@@ -1,5 +1,6 @@
 package org.ph7.doraemon.item.tool;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -7,9 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import org.ph7.doraemon.entity.EntityRandomDoor;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemRandomDoor extends Item
@@ -102,4 +105,11 @@ public class ItemRandomDoor extends Item
             }
         }
     }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+    {
+        tooltip.add(new TextComponentTranslation(this.getUnlocalizedName() + ".desc").getUnformattedComponentText());
+    }
+
 }

@@ -10,6 +10,7 @@ item.fishing_rod_auto.desc=Auto fish
 item.dimensional_pocket.desc=Mysterious storage space
 item.dictator_button.desc=Make entity disappear by right click
 item.love_arrow.desc=Make animal fall in love
+item.random_door.desc=shift+right click open GUI and fill position. P.S. it can only be transferred to the loaded open space
 
 InventoryDimensionalPocket=Four Dimensional Pocket
 
