@@ -22,12 +22,12 @@ public class RenderWallpaper extends Render<EntityWallpaper>
     @Override
     public void doRender(EntityWallpaper entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
-        GlStateManager.pushMatrix();
+        /*GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, z);
         //ModelBase model = entity.getModel();
         this.bindEntityTexture(entity);
         modelWallpaper.render(entity, 0, 0, 0, 0, 0, 0.0625F);
-        GlStateManager.popMatrix();
+        GlStateManager.popMatrix();*/
 
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }

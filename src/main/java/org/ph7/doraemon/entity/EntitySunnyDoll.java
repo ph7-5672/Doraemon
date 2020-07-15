@@ -15,8 +15,8 @@ public class EntitySunnyDoll extends Entity
     public EntitySunnyDoll(World worldIn)
     {
         super(worldIn);
+        this.setSize(0.2F, 1.0F);
     }
-
 
     @Override
     public void onUpdate()
@@ -25,19 +25,22 @@ public class EntitySunnyDoll extends Entity
         {
             //设置天气
             WorldInfo worldInfo = this.world.getWorldInfo();
-            if (worldInfo.isRaining() || worldInfo.isThundering())
-            {
-                worldInfo.setCleanWeatherTime(1);
-                worldInfo.setRainTime(0);
-                worldInfo.setThunderTime(0);
-                worldInfo.setRaining(false);
-                worldInfo.setThundering(false);
-            }
+            worldInfo.setCleanWeatherTime(1);
+            worldInfo.setRainTime(0);
+            worldInfo.setThunderTime(0);
+            worldInfo.setRaining(false);
+            worldInfo.setThundering(false);
         }
 
         super.onUpdate();
 
     }
+
+    public boolean canBeCollidedWith()
+    {
+        return !this.isDead;
+    }
+
 
     @Override
     public boolean attackEntityFrom(DamageSource source, float amount)
@@ -59,16 +62,19 @@ public class EntitySunnyDoll extends Entity
         return true;
     }
 
-    public AxisAlignedBB getCollisionBoundingBox()
+    @Override
+    public AxisAlignedBB getEntityBoundingBox()
+    {
+        return super.getEntityBoundingBox().offset(0, -1.1D, 0);
+    }
+
+    @Nullable
+    @Override
+    public AxisAlignedBB getCollisionBox(Entity entityIn)
     {
         return this.getEntityBoundingBox();
     }
 
-    @Nullable
-    public AxisAlignedBB getCollisionBox(Entity entityIn)
-    {
-        return entityIn.getEntityBoundingBox();
-    }
 
     @Override
     protected void entityInit()
@@ -86,5 +92,10 @@ public class EntitySunnyDoll extends Entity
     protected void writeEntityToNBT(NBTTagCompound compound)
     {
 
+    }
+
+    protected boolean canTriggerWalking()
+    {
+        return true;
     }
 }

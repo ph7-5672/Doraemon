@@ -33,21 +33,22 @@ public class RenderSunnyDoll extends Render<EntitySunnyDoll>
         GlStateManager.scale(-1.0F, -1.0F, 1.0F);
         this.bindEntityTexture(entity);
 
-        modelSunnyDoll.render(entity, 0, 0,-0.1F,0,0,0.0625F);
-
         if (this.renderOutlines)
         {
             GlStateManager.enableColorMaterial();
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
+
         }
 
-        GlStateManager.popMatrix();
+        modelSunnyDoll.render(entity, 0, 0,-0.1F,0,0,0.0625F);
 
         if (this.renderOutlines)
         {
             GlStateManager.disableOutlineMode();
             GlStateManager.disableColorMaterial();
         }
+
+        GlStateManager.popMatrix();
 
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }

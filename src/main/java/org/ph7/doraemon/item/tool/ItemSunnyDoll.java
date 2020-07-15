@@ -12,7 +12,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import org.ph7.doraemon.entity.EntitySunnyDoll;
-
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -36,12 +35,9 @@ public class ItemSunnyDoll extends Item
             float z = pos.getZ() + hitZ;
             entitySunnyDoll.setPosition(x, y, z);
             entitySunnyDoll.rotationYaw = player.rotationYaw;
-            if (worldIn.getCollisionBoxes(entitySunnyDoll, entitySunnyDoll.getEntityBoundingBox().grow(-0.1D)).isEmpty())
+            if (!worldIn.isRemote)
             {
-                if (!worldIn.isRemote)
-                {
-                    worldIn.spawnEntity(entitySunnyDoll);
-                }
+                worldIn.spawnEntity(entitySunnyDoll);
             }
             return EnumActionResult.SUCCESS;
         }

@@ -73,6 +73,7 @@ public class EntityRandomDoor extends Entity
         //this.setEntityBoundingBox(new AxisAlignedBB(0, 0, 0, 1D, 1D, 1D));
     }
 
+    //是否可以交互（鼠标左右键）
     public boolean canBeCollidedWith()
     {
         return !this.isDead;
