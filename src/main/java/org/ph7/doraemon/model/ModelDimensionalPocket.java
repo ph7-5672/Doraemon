@@ -3,12 +3,15 @@ package org.ph7.doraemon.model;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.ph7.doraemon.common.MathUtil;
 
 /**
  * ModelDimensionalPocket - ph7
  * Created using Tabula 7.1.0
  */
+@SideOnly(Side.CLIENT)
 public class ModelDimensionalPocket extends ModelBiped
 {
     public ModelRenderer bipedBodyWear;

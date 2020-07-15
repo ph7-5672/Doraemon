@@ -164,7 +164,6 @@ public class EntityRandomDoor extends Entity
         BlockPos trans = this.getTrans();
         if (!list.isEmpty())
         {
-
             if (!trans.equals(this.getPosition()) && this.isOpen())
             {
                 for (Entity entity : list)

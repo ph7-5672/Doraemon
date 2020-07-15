@@ -1,17 +1,18 @@
 package org.ph7.doraemon.model;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.ph7.doraemon.common.MathUtil;
 
 /**
  * zhuqingt - Undefined
  * Created using Tabula 7.1.0
  */
+@SideOnly(Side.CLIENT)
 public class ModelBambooDragonfly extends ModelBiped
 {
     public ModelRenderer shape1;

@@ -14,10 +14,14 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.core.Doraemon;
 import org.ph7.doraemon.entity.EntityRandomDoor;
+import org.ph7.doraemon.entity.EntitySunnyDoll;
+import org.ph7.doraemon.entity.EntityWallpaper;
 import org.ph7.doraemon.init.ModBlocks;
 import org.ph7.doraemon.init.ModEntities;
 import org.ph7.doraemon.init.ModItems;
 import org.ph7.doraemon.render.RenderRandomDoor;
+import org.ph7.doraemon.render.RenderSunnyDoll;
+import org.ph7.doraemon.render.RenderWallpaper;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class CommonEventHandler
@@ -56,6 +60,17 @@ public class CommonEventHandler
     }
 
     @SubscribeEvent
+    public void registerEntityRenders(ModelRegistryEvent event)
+    {
+        RenderingRegistry.registerEntityRenderingHandler(EntityWallpaper.class, RenderWallpaper::new);
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityRandomDoor.class, RenderRandomDoor::new);
+
+        RenderingRegistry.registerEntityRenderingHandler(EntitySunnyDoll.class, RenderSunnyDoll::new);
+    }
+
+
+    @SubscribeEvent
     public void registerModels(ModelRegistryEvent event)
     {
         ModItems.ITEMS.forEach(i ->
@@ -71,7 +86,6 @@ public class CommonEventHandler
             Doraemon.proxy.setModelResource(i);
         });
 
-        RenderingRegistry.registerEntityRenderingHandler(EntityRandomDoor.class, manager -> new RenderRandomDoor(manager));
     }
 
 
@@ -85,4 +99,5 @@ public class CommonEventHandler
     public void playerLogin(PlayerEvent.PlayerLoggedInEvent event)
     {
     }
+    
 }
