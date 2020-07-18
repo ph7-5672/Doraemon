@@ -33,10 +33,10 @@ public class ModItems
     public static ItemRandomDoor RANDOM_DOOR = new ItemRandomDoor();
     public static ItemSunnyDoll SUNNY_DOLL = new ItemSunnyDoll();
     public static ItemWeatherBox WEATHER_BOX = new ItemWeatherBox();
-    public static ItemThunderCloud THUNDER_CLOUD = new ItemThunderCloud();
 
 
     //todo 待完成
+    public static ItemThunderCloud THUNDER_CLOUD = new ItemThunderCloud();
     public static ItemDigGlove DIG_GLOVE = new ItemDigGlove();
     public static ItemWallpaperHouse WALLPAPER_HOUSE = new ItemWallpaperHouse(10, 10);
     public static ItemRecoverLight RECOVER_LIGHT = new ItemRecoverLight();
@@ -53,8 +53,6 @@ public class ModItems
         register(RANDOM_DOOR, "random_door");
         register(SUNNY_DOLL, "sunny_doll");
         register(WEATHER_BOX, "weather_box");
-        register(THUNDER_CLOUD, "thunder_cloud");
-
     }
 
     private static void register(Item item, String name)

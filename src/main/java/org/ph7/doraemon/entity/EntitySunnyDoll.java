@@ -39,12 +39,6 @@ public class EntitySunnyDoll extends EntityItemBase
             worldInfo.setThunderTime(0);
             worldInfo.setRaining(false);
             worldInfo.setThundering(false);
-            Minecraft mc = Minecraft.getMinecraft();
-            if (mc.entityRenderer instanceof EntityWeatherBox.WeatherRenderer)
-            {
-                EntityWeatherBox.WeatherRenderer entityRenderer = (EntityWeatherBox.WeatherRenderer)mc.entityRenderer;
-                entityRenderer.weather = EntityWeatherBox.EnumWeather.SUNNY;
-            }
         }
 
         super.onUpdate();

@@ -25,7 +25,6 @@ public class ClientProxy extends CommonProxy
     public void init(FMLInitializationEvent event)
     {
         super.init(event);
-        registerEntityRenderer();
     }
 
     @Override
@@ -37,11 +36,5 @@ public class ClientProxy extends CommonProxy
     public void registerKeyBindings()
     {
         ClientRegistry.registerKeyBinding(openDimensionalPocket);
-    }
-
-    public void registerEntityRenderer()
-    {
-        Minecraft mc = Minecraft.getMinecraft();
-        mc.entityRenderer = new EntityWeatherBox.WeatherRenderer(mc, mc.getResourceManager());
     }
 }

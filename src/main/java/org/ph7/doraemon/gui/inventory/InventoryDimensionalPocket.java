@@ -1,30 +1,21 @@
 package org.ph7.doraemon.gui.inventory;
 
+import com.google.common.collect.Lists;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.World;
-import net.minecraft.world.storage.MapStorage;
-import net.minecraft.world.storage.WorldSavedData;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.ph7.doraemon.common.ItemUtil;
-import org.ph7.doraemon.common.Reference;
-import org.ph7.doraemon.init.ModBlocks;
 import org.ph7.doraemon.init.ModItems;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
 
 
 public class InventoryDimensionalPocket implements IInventory
@@ -51,7 +42,10 @@ public class InventoryDimensionalPocket implements IInventory
         if (tagCompound == null)
         {
             tagCompound = new NBTTagCompound();
-            ItemUtil.saveAllItems(tagCompound, ModItems.ITEMS);
+            ArrayList<Item> list = Lists.newArrayList();
+            list.addAll(ModItems.ITEMS);
+            list.remove(ModItems.DIMENSIONAL_POCKET);
+            ItemUtil.saveAllItems(tagCompound, list);
         }
         ItemStackHelper.loadAllItems(tagCompound, inventory);
     }
