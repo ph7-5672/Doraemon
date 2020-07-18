@@ -16,12 +16,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.ph7.doraemon.entity.EntityAirBullet;
+import org.ph7.doraemon.item.ItemBase;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
 
-public class ItemAirGun extends Item
+public class ItemAirGun extends ItemBase
 {
 
     @SideOnly(Side.CLIENT)
@@ -77,9 +78,4 @@ public class ItemAirGun extends Item
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
     }
 
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-        tooltip.add(new TextComponentTranslation(this.getUnlocalizedName() + ".desc").getUnformattedComponentText());
-    }
 }

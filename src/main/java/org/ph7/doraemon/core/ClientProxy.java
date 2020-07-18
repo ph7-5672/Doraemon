@@ -1,5 +1,6 @@
 package org.ph7.doraemon.core;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -7,6 +8,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.lwjgl.input.Keyboard;
 import org.ph7.doraemon.common.Reference;
+import org.ph7.doraemon.entity.EntityWeatherBox;
 
 public class ClientProxy extends CommonProxy
 {
@@ -23,7 +25,7 @@ public class ClientProxy extends CommonProxy
     public void init(FMLInitializationEvent event)
     {
         super.init(event);
-
+        registerEntityRenderer();
     }
 
     @Override
@@ -35,5 +37,11 @@ public class ClientProxy extends CommonProxy
     public void registerKeyBindings()
     {
         ClientRegistry.registerKeyBinding(openDimensionalPocket);
+    }
+
+    public void registerEntityRenderer()
+    {
+        Minecraft mc = Minecraft.getMinecraft();
+        mc.entityRenderer = new EntityWeatherBox.WeatherRenderer(mc, mc.getResourceManager());
     }
 }

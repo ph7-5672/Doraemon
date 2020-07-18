@@ -1,23 +1,18 @@
-package org.ph7.doraemon.item.tool;
+package org.ph7.doraemon.item.room;
 
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import org.ph7.doraemon.entity.EntityWallpaper;
-import javax.annotation.Nullable;
-import java.util.List;
+import org.ph7.doraemon.item.ItemBase;
 
 /**
  * 壁纸房
  */
-public class ItemWallpaperHouse extends Item
+public class ItemWallpaperHouse extends ItemBase
 {
 
     protected int width;
@@ -42,12 +37,6 @@ public class ItemWallpaperHouse extends Item
             }
         }
         return EnumActionResult.PASS;
-    }
-
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-        tooltip.add(new TextComponentTranslation(this.getUnlocalizedName() + ".desc").getUnformattedComponentText());
     }
 
 }

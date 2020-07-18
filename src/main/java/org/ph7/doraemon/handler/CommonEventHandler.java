@@ -33,11 +33,6 @@ public class CommonEventHandler
         {
             event.getRegistry().register(i);
         });
-
-        ModBlocks.ITEM_BLOCKS.forEach(i ->
-        {
-            event.getRegistry().register(i);
-        });
     }
 
     @SubscribeEvent
@@ -58,36 +53,6 @@ public class CommonEventHandler
             event.getRegistry().register(e);
         });
     }
-
-    @SubscribeEvent
-    public void registerEntityRenders(ModelRegistryEvent event)
-    {
-        RenderingRegistry.registerEntityRenderingHandler(EntityWallpaper.class, RenderWallpaper::new);
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityRandomDoor.class, RenderRandomDoor::new);
-
-        RenderingRegistry.registerEntityRenderingHandler(EntitySunnyDoll.class, RenderSunnyDoll::new);
-    }
-
-
-    @SubscribeEvent
-    public void registerModels(ModelRegistryEvent event)
-    {
-        ModItems.ITEMS.forEach(i ->
-        {
-            Doraemon.proxy.setModelResource(i);
-        });
-        ModBlocks.BLOCKS.forEach(b ->
-        {
-            Doraemon.proxy.setModelResource(b);
-        });
-        ModBlocks.ITEM_BLOCKS.forEach(i ->
-        {
-            Doraemon.proxy.setModelResource(i);
-        });
-
-    }
-
 
     @SubscribeEvent
     public void attachCapability(AttachCapabilitiesEvent<Entity> event)

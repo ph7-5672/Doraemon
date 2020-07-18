@@ -4,6 +4,8 @@ item.dimensional_pocket.name=Four Dimensional Pocket
 item.dictator_button.name=Dictator button
 item.love_arrow.name=Love Arrow
 item.random_door.name=Random Door
+item.sunny_doll.name=Sunny Doll
+item.weather_box.name=Weather Box
 
 item.bamboo_dragonfly.desc=Can fly if wear
 item.fishing_rod_auto.desc=Auto fish
@@ -11,6 +13,8 @@ item.dimensional_pocket.desc=Mysterious storage space
 item.dictator_button.desc=Make entity disappear by right click
 item.love_arrow.desc=Make animal fall in love
 item.random_door.desc=shift+right click open GUI and fill position. P.S. it can only be transferred to the loaded open space
+item.sunny_doll.desc=
+item.weather_box.desc=
 
 InventoryDimensionalPocket=Four Dimensional Pocket
 
@@ -20,3 +24,10 @@ random_door.pos.set=Set Position
 random_door.pos.error=Error! Fill number please
 random_door.pos.save=Save
 random_door.pos.cannotTrans=Cannot trans to the position
+
+weather_box.info=Current Weather
+weather.clear=Clear
+weather.rain=Rain
+weather.thunder=Thunder
+weather.snow=Snow
+weather.rain_snow=Rain Snow

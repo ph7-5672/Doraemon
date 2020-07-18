@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=north":  { "model": "doraemon:weather_box"},
+    "facing=west":  { "model": "doraemon:weather_box"},
+    "facing=south":  { "model": "doraemon:weather_box"},
+    "facing=east":  { "model": "doraemon:weather_box" },
+    "facing=up":  { "model": "doraemon:weather_box" },
+    "facing=down":  { "model": "doraemon:weather_box" }
+  }
+}

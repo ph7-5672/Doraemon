@@ -2,6 +2,7 @@ package org.ph7.doraemon.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -21,7 +22,7 @@ import org.ph7.doraemon.network.GuiPacket;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class EntityRandomDoor extends Entity
+public class EntityRandomDoor extends EntityItemBase
 {
     private static DataParameter<Boolean> OPEN = EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.BOOLEAN);
     private static DataParameter<Integer>[] TRANS = new DataParameter[]{
@@ -73,36 +74,16 @@ public class EntityRandomDoor extends Entity
         //this.setEntityBoundingBox(new AxisAlignedBB(0, 0, 0, 1D, 1D, 1D));
     }
 
-    //是否可以交互（鼠标左右键）
-    public boolean canBeCollidedWith()
+    @Override
+    protected Item getDropItem()
     {
-        return !this.isDead;
+        return ModItems.RANDOM_DOOR;
     }
 
     @Override
     protected boolean canFitPassenger(Entity passenger)
     {
         return super.canFitPassenger(passenger);
-    }
-
-    @Override
-    public boolean attackEntityFrom(DamageSource source, float amount)
-    {
-        if (this.isEntityInvulnerable(source))
-        {
-            return false;
-        }
-        else if (!this.world.isRemote)
-        {
-            if (this.world.getGameRules().getBoolean("doEntityDrops"))
-            {
-                this.dropItemWithOffset(ModItems.RANDOM_DOOR, 1, 0.0F);
-            }
-
-            this.setDead();
-        }
-
-        return true;
     }
 
     @Override
@@ -176,6 +157,12 @@ public class EntityRandomDoor extends Entity
         }
     }
 
+    /**
+     * 右键互动
+     * @param player
+     * @param hand
+     * @return
+     */
     @Override
     public boolean processInitialInteract(EntityPlayer player, EnumHand hand)
     {

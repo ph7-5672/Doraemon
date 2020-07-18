@@ -51,10 +51,7 @@ public class InventoryDimensionalPocket implements IInventory
         if (tagCompound == null)
         {
             tagCompound = new NBTTagCompound();
-            ArrayList<Item> items = new ArrayList<>();
-            items.addAll(ModItems.ITEMS);
-            items.addAll(ModBlocks.ITEM_BLOCKS);
-            ItemUtil.saveAllItems(tagCompound, items);
+            ItemUtil.saveAllItems(tagCompound, ModItems.ITEMS);
         }
         ItemStackHelper.loadAllItems(tagCompound, inventory);
     }

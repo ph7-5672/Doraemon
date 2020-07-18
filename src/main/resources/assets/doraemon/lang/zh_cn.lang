@@ -4,6 +4,8 @@ item.dimensional_pocket.name=四次元口袋
 item.dictator_button.name=独裁者按钮
 item.love_arrow.name=爱神之箭
 item.random_door.name=任意门
+item.sunny_doll.name=晴天娃娃
+item.weather_box.name=气象盒
 
 item.bamboo_dragonfly.desc=装备后获得飞行能力
 item.fishing_rod_auto.desc=右键自动钓鱼，可附魔
@@ -11,6 +13,8 @@ item.dimensional_pocket.desc=装备后按B打开物品栏
 item.dictator_button.desc=右键让实体消失
 item.love_arrow.desc=爱神丘比特之箭，射中目标会使其坠入爱河
 item.random_door.desc=shift+右键填写坐标，右键打开门走入后传送到指定坐标。注意：只能传送到已加载的空地。
+item.sunny_doll.desc=
+item.weather_box.desc=
 
 InventoryDimensionalPocket=四次元口袋
 
@@ -20,3 +24,10 @@ random_door.pos.set=设置传送位置
 random_door.pos.error=设置失败，请输入纯数字
 random_door.pos.save=保存
 random_door.pos.cannotTrans=该位置无法传送
+
+weather_box.info=当前天气
+weather.clear=晴天
+weather.rain=雨天
+weather.thunder=雷暴
+weather.snow=降雪
+weather.rain_snow=雨夹雪

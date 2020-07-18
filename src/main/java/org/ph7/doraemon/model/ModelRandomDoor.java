@@ -51,7 +51,6 @@ public class ModelRandomDoor extends ModelBase
     {
         if (entityIn instanceof EntityRandomDoor)
         {
-            GlStateManager.rotate(90.0F, 0.0F, 1.0F, 0.0F);
             EntityRandomDoor randomDoor = (EntityRandomDoor) entityIn;
             this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
             if ((randomDoor).isOpen())

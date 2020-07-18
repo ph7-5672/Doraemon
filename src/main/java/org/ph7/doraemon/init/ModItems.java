@@ -7,15 +7,19 @@ import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.handler.ItemStackRenderer;
 import org.ph7.doraemon.item.armor.ItemBambooDragonfly;
 import org.ph7.doraemon.item.armor.ItemDimensionalPocket;
+import org.ph7.doraemon.item.light.ItemLightShrink;
+import org.ph7.doraemon.item.light.ItemRecoverLight;
+import org.ph7.doraemon.item.room.ItemRandomDoor;
+import org.ph7.doraemon.item.room.ItemWallpaperHouse;
+import org.ph7.doraemon.item.tool.ItemDigGlove;
 import org.ph7.doraemon.item.tool.ItemFishingRodAuto;
-import org.ph7.doraemon.item.tool.ItemRandomDoor;
-import org.ph7.doraemon.item.tool.ItemSunnyDoll;
-import org.ph7.doraemon.item.tool.ItemWallpaperHouse;
-import org.ph7.doraemon.item.tool.light.ItemLightShrink;
-import org.ph7.doraemon.item.tool.light.ItemRecoverLight;
 import org.ph7.doraemon.item.weapon.ItemAirGun;
 import org.ph7.doraemon.item.weapon.ItemDictatorButton;
 import org.ph7.doraemon.item.weapon.ItemLoveArrow;
+import org.ph7.doraemon.item.weather.ItemSunnyDoll;
+import org.ph7.doraemon.item.weather.ItemThunderCloud;
+import org.ph7.doraemon.item.weather.ItemWeatherBox;
+
 import java.util.List;
 
 public class ModItems
@@ -28,9 +32,12 @@ public class ModItems
     public static ItemLoveArrow LOVE_ARROW = new ItemLoveArrow();
     public static ItemRandomDoor RANDOM_DOOR = new ItemRandomDoor();
     public static ItemSunnyDoll SUNNY_DOLL = new ItemSunnyDoll();
-    
+    public static ItemWeatherBox WEATHER_BOX = new ItemWeatherBox();
+    public static ItemThunderCloud THUNDER_CLOUD = new ItemThunderCloud();
+
 
     //todo 待完成
+    public static ItemDigGlove DIG_GLOVE = new ItemDigGlove();
     public static ItemWallpaperHouse WALLPAPER_HOUSE = new ItemWallpaperHouse(10, 10);
     public static ItemRecoverLight RECOVER_LIGHT = new ItemRecoverLight();
     public static ItemAirGun AIR_GUN = new ItemAirGun();
@@ -45,6 +52,8 @@ public class ModItems
         register(LOVE_ARROW, "love_arrow");
         register(RANDOM_DOOR, "random_door");
         register(SUNNY_DOLL, "sunny_doll");
+        register(WEATHER_BOX, "weather_box");
+        register(THUNDER_CLOUD, "thunder_cloud");
 
     }
 

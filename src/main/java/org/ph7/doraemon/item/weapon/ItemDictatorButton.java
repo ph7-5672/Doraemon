@@ -10,6 +10,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import org.ph7.doraemon.item.ItemBase;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * 独裁者按钮
  */
-public class ItemDictatorButton extends Item
+public class ItemDictatorButton extends ItemBase
 {
 
     public ItemDictatorButton()
@@ -43,9 +44,4 @@ public class ItemDictatorButton extends Item
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
     }
 
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-        tooltip.add(new TextComponentTranslation(this.getUnlocalizedName() + ".desc").getUnformattedComponentText());
-    }
 }

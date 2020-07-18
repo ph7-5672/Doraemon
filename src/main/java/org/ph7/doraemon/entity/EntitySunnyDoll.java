@@ -1,6 +1,9 @@
 package org.ph7.doraemon.entity;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -10,12 +13,18 @@ import org.ph7.doraemon.init.ModItems;
 
 import javax.annotation.Nullable;
 
-public class EntitySunnyDoll extends Entity
+public class EntitySunnyDoll extends EntityItemBase
 {
     public EntitySunnyDoll(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.2F, 1.0F);
+        this.setSize(0.5F, 1.0F);
+    }
+
+    @Override
+    protected Item getDropItem()
+    {
+        return ModItems.SUNNY_DOLL;
     }
 
     @Override
@@ -25,41 +34,21 @@ public class EntitySunnyDoll extends Entity
         {
             //设置天气
             WorldInfo worldInfo = this.world.getWorldInfo();
-            worldInfo.setCleanWeatherTime(1);
+            worldInfo.setCleanWeatherTime(12380 * 20);
             worldInfo.setRainTime(0);
             worldInfo.setThunderTime(0);
             worldInfo.setRaining(false);
             worldInfo.setThundering(false);
+            Minecraft mc = Minecraft.getMinecraft();
+            if (mc.entityRenderer instanceof EntityWeatherBox.WeatherRenderer)
+            {
+                EntityWeatherBox.WeatherRenderer entityRenderer = (EntityWeatherBox.WeatherRenderer)mc.entityRenderer;
+                entityRenderer.weather = EntityWeatherBox.EnumWeather.SUNNY;
+            }
         }
 
         super.onUpdate();
 
-    }
-
-    public boolean canBeCollidedWith()
-    {
-        return !this.isDead;
-    }
-
-
-    @Override
-    public boolean attackEntityFrom(DamageSource source, float amount)
-    {
-        if (this.isEntityInvulnerable(source))
-        {
-            return false;
-        }
-        else if (!this.world.isRemote)
-        {
-            if (this.world.getGameRules().getBoolean("doEntityDrops"))
-            {
-                this.dropItemWithOffset(ModItems.SUNNY_DOLL, 1, 0.0F);
-            }
-
-            this.setDead();
-        }
-
-        return true;
     }
 
     @Override
@@ -96,6 +85,6 @@ public class EntitySunnyDoll extends Entity
 
     protected boolean canTriggerWalking()
     {
-        return true;
+        return false;
     }
 }
