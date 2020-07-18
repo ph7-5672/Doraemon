@@ -3,15 +3,18 @@ package org.ph7.doraemon.render;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.ph7.doraemon.common.EnumWeather;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.common.WeatherUtil;
+import org.ph7.doraemon.entity.EntitySunnyDoll;
 import org.ph7.doraemon.entity.EntityWeatherBox;
 import org.ph7.doraemon.model.ModelWeatherBox;
 import javax.annotation.Nullable;
+import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class RenderWeatherBox extends RenderBase<EntityWeatherBox>
@@ -30,9 +33,13 @@ public class RenderWeatherBox extends RenderBase<EntityWeatherBox>
     public void doRender(EntityWeatherBox entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
-        if (entity.getWeather() == EnumWeather.SNOW || entity.getWeather() == EnumWeather.RAIN_SNOW)
+        List<EntitySunnyDoll> entities = entity.world.getEntities(EntitySunnyDoll.class, EntitySelectors.IS_ALIVE);
+        if (entities.isEmpty())
         {
-            WeatherUtil.snow(partialTicks, updateCount++);
+            if (entity.getWeather() == EnumWeather.SNOW || entity.getWeather() == EnumWeather.RAIN_SNOW)
+            {
+                WeatherUtil.snow(partialTicks, updateCount++);
+            }
         }
     }
 

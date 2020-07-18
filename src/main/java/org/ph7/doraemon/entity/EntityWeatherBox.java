@@ -9,6 +9,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
@@ -17,6 +18,7 @@ import net.minecraft.world.storage.WorldInfo;
 import org.ph7.doraemon.common.EnumWeather;
 import org.ph7.doraemon.init.ModItems;
 import javax.annotation.Nullable;
+import java.util.List;
 
 //todo 待优化（与天气模组兼容）
 public class EntityWeatherBox extends EntityItemBase
@@ -40,9 +42,17 @@ public class EntityWeatherBox extends EntityItemBase
         if (++meta >= EnumWeather.values().length) meta = 0;
         EnumWeather newWeather = EnumWeather.getByMeta(meta);
         this.setWeather(newWeather);
+        mc.ingameGUI.setOverlayMessage(I18n.format("weather_box.info") + ": " + this.getWeatherInfo(), false);
+
+        List<EntitySunnyDoll> entities = this.world.getEntities(EntitySunnyDoll.class, EntitySelectors.IS_ALIVE);
+        if (!entities.isEmpty())
+        {
+            return false;
+        }
 
         int i = 12380 * 20;
         WorldInfo worldInfo = world.getWorldInfo();
+
         if (newWeather == EnumWeather.RAIN || newWeather == EnumWeather.RAIN_SNOW)
         {
             worldInfo.setCleanWeatherTime(0);
@@ -68,7 +78,6 @@ public class EntityWeatherBox extends EntityItemBase
             worldInfo.setThundering(false);
         }
 
-        mc.ingameGUI.setOverlayMessage(I18n.format("weather_box.info") + ": " + this.getWeatherInfo(), false);
         return true;
     }
 

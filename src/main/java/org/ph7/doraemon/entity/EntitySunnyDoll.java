@@ -1,17 +1,21 @@
 package org.ph7.doraemon.entity;
 
+import com.google.common.base.Predicates;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.WorldInfo;
+import org.ph7.doraemon.common.EnumWeather;
 import org.ph7.doraemon.init.ModItems;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class EntitySunnyDoll extends EntityItemBase
 {
