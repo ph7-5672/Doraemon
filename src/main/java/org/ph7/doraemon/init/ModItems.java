@@ -9,7 +9,7 @@ import org.ph7.doraemon.item.armor.ItemBambooDragonfly;
 import org.ph7.doraemon.item.armor.ItemDimensionalPocket;
 import org.ph7.doraemon.item.light.ItemLightShrink;
 import org.ph7.doraemon.item.light.ItemRecoverLight;
-import org.ph7.doraemon.item.room.ItemRandomDoor;
+import org.ph7.doraemon.item.portal.ItemRandomDoor;
 import org.ph7.doraemon.item.room.ItemWallpaperHouse;
 import org.ph7.doraemon.item.tool.ItemDigGlove;
 import org.ph7.doraemon.item.tool.ItemFishingRodAuto;

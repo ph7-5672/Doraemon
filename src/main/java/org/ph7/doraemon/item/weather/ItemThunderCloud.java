@@ -20,7 +20,7 @@ public class ItemThunderCloud extends ItemEntityBase
 {
 
     @Override
-    protected Entity getEntity(World world)
+    protected Entity getEntity(World world, BlockPos pos)
     {
         return new EntityThunderCloud(world);
     }

@@ -12,10 +12,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class WeatherUtil
+@SideOnly(Side.CLIENT)
+public class ParticleUtil
 {
     private static final Random rand = new Random();
     private static final ResourceLocation SNOW_TEXTURES = new ResourceLocation("textures/environment/snow.png");
@@ -37,6 +40,11 @@ public class WeatherUtil
         }
     }
 
+    /**
+     * 复制来的雪花特效，在ClientThread中调用
+     * @param partialTicks
+     * @param rendererUpdateCount
+     */
     public static void snow(float partialTicks, int rendererUpdateCount)
     {
         Minecraft mc = Minecraft.getMinecraft();

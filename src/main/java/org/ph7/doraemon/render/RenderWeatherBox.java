@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.ph7.doraemon.common.EnumWeather;
 import org.ph7.doraemon.common.Reference;
-import org.ph7.doraemon.common.WeatherUtil;
+import org.ph7.doraemon.common.ParticleUtil;
 import org.ph7.doraemon.entity.EntitySunnyDoll;
 import org.ph7.doraemon.entity.EntityWeatherBox;
 import org.ph7.doraemon.model.ModelWeatherBox;
@@ -38,7 +38,7 @@ public class RenderWeatherBox extends RenderBase<EntityWeatherBox>
         {
             if (entity.getWeather() == EnumWeather.SNOW || entity.getWeather() == EnumWeather.RAIN_SNOW)
             {
-                WeatherUtil.snow(partialTicks, updateCount++);
+                ParticleUtil.snow(partialTicks, updateCount++);
             }
         }
     }

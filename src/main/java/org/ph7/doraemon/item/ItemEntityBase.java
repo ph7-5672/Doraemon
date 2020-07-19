@@ -16,7 +16,7 @@ public abstract class ItemEntityBase extends ItemBase
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        Entity entity = this.getEntity(worldIn);
+        Entity entity = this.getEntity(worldIn, pos);
         ItemStack itemStack = player.getHeldItem(hand);
         if (entity != null)
         {
@@ -40,7 +40,7 @@ public abstract class ItemEntityBase extends ItemBase
         return EnumActionResult.SUCCESS;
     }
 
-    protected abstract Entity getEntity(World world);
+    protected abstract Entity getEntity(World world, BlockPos pos);
 
     protected boolean isFacingPlayer()
     {

@@ -13,7 +13,7 @@ import org.ph7.doraemon.item.ItemEntityBase;
 public class ItemWeatherBox extends ItemEntityBase
 {
     @Override
-    protected Entity getEntity(World world)
+    protected Entity getEntity(World world, BlockPos pos)
     {
         return new EntityWeatherBox(world);
     }

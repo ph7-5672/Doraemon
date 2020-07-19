@@ -1,5 +1,6 @@
 package org.ph7.doraemon.entity;
 
+import com.google.common.base.Predicate;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -25,11 +26,7 @@ import java.util.List;
 public class EntityRandomDoor extends EntityItemBase
 {
     private static DataParameter<Boolean> OPEN = EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.BOOLEAN);
-    private static DataParameter<Integer>[] TRANS = new DataParameter[]{
-            EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.VARINT),
-            EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.VARINT),
-            EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.VARINT)
-    };
+    private static DataParameter<BlockPos> TRANS = EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.BLOCK_POS);
 
     public EntityRandomDoor(World worldIn)
     {
@@ -67,11 +64,7 @@ public class EntityRandomDoor extends EntityItemBase
     protected void entityInit()
     {
         this.dataManager.register(OPEN, Boolean.FALSE);
-        this.dataManager.register(TRANS[0], 0);
-        this.dataManager.register(TRANS[1], 0);
-        this.dataManager.register(TRANS[2], 0);
-
-        //this.setEntityBoundingBox(new AxisAlignedBB(0, 0, 0, 1D, 1D, 1D));
+        this.dataManager.register(TRANS, BlockPos.ORIGIN);
     }
 
     @Override
@@ -104,8 +97,10 @@ public class EntityRandomDoor extends EntityItemBase
     protected void writeEntityToNBT(NBTTagCompound compound)
     {
         compound.setBoolean("Open", this.isOpen());
+
         BlockPos trans = this.getTrans();
         compound.setIntArray("Trans", new int[]{trans.getX(), trans.getY(), trans.getZ()});
+
     }
 
     public void setOpen(boolean value)
@@ -120,22 +115,26 @@ public class EntityRandomDoor extends EntityItemBase
 
     public void setTrans(int x, int y, int z)
     {
-        this.dataManager.set(TRANS[0], x);
-        this.dataManager.set(TRANS[1], y);
-        this.dataManager.set(TRANS[2], z);
+        this.setTrans(new BlockPos(x,y,z));
     }
 
     public void setTrans(BlockPos pos)
     {
-        this.setTrans(pos.getX(), pos.getY(), pos.getZ());
+        this.dataManager.set(TRANS, pos);
     }
 
     public BlockPos getTrans()
     {
-        Integer x = this.dataManager.get(TRANS[0]);
-        Integer y = this.dataManager.get(TRANS[1]);
-        Integer z = this.dataManager.get(TRANS[2]);
-        return new BlockPos(x, y, z);
+        return this.dataManager.get(TRANS);
+    }
+
+    public EntityRandomDoor getCopy()
+    {
+        BlockPos trans = this.getTrans();
+        List<? extends EntityRandomDoor> entities = this.world.getEntities(this.getClass(), x -> x.getPosition().equals(trans));
+        if (entities.isEmpty()) return null;
+
+        return entities.get(0);
     }
 
     @Override
@@ -150,8 +149,20 @@ public class EntityRandomDoor extends EntityItemBase
             {
                 for (Entity entity : list)
                 {
-                    entity.setPosition(trans.getX(), trans.getY(), trans.getZ());
-                    //entity.addedToChunk
+                    //通过motion计算出传送后的位置，至少隔一个单位，避免反复传送
+                    double x = trans.getX();
+                    double y = trans.getY();
+                    double z = trans.getZ();
+                    if (Math.abs(entity.motionX) >= Math.abs(entity.motionZ))
+                    {
+                        x = entity.motionX > 0 ? ++x : --x;
+                    }
+                    else
+                    {
+                        z = entity.motionZ > 0 ? ++z : --z;
+                    }
+                    entity.setPosition(x, y, z);
+
                 }
             }
         }
@@ -174,8 +185,36 @@ public class EntityRandomDoor extends EntityItemBase
         else
         {
             this.setOpen(!this.isOpen());
+            EntityRandomDoor copy = this.getCopy();
+            if (copy != null) copy.setOpen(this.isOpen());
         }
         return true;
     }
 
+    @Override
+    public boolean attackEntityFrom(DamageSource source, float amount)
+    {
+        if (super.attackEntityFrom(source, amount))
+        {
+            if (!this.world.isRemote)
+            {
+                EntityRandomDoor copy = (EntityRandomDoor) this.getCopy();
+                if (copy != null) copy.setDead();
+                this.setTrans(this.getPosition());
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public EntityRandomDoor copy()
+    {
+        EntityRandomDoor copy = new EntityRandomDoor(this.world);
+        copy.rotationYaw = this.rotationYaw;
+        BlockPos trans = this.getTrans();
+        copy.setPosition(trans.getX(), trans.getY(), trans.getZ());
+        copy.setTrans(this.getPosition());
+        copy.setOpen(this.isOpen());
+        return copy;
+    }
 }

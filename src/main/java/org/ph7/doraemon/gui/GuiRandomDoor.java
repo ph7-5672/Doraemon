@@ -6,6 +6,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
@@ -14,6 +15,7 @@ import org.ph7.doraemon.entity.EntityRandomDoor;
 import org.ph7.doraemon.network.TransPacket;
 
 import java.io.IOException;
+import java.util.List;
 
 public class GuiRandomDoor extends GuiScreen
 {
@@ -119,29 +121,35 @@ public class GuiRandomDoor extends GuiScreen
                     BlockPos blockPos = new BlockPos(x, y, z);
 
                     World world = randomDoor.getEntityWorld();
-                    IBlockState state1 = world.getBlockState(blockPos);
-                    IBlockState state2 = world.getBlockState(blockPos.up());
+
+                    boolean flag = true;
                     Chunk chunk = world.getChunkFromBlockCoords(blockPos);
 
-                    if (chunk.isLoaded() && state1.getMaterial() == Material.AIR && state2.getMaterial() == Material.AIR)
+                    if (chunk.isLoaded())
                     {
-                        //dataManager属于server side, gui中调用需要数据同步
-                        Doraemon.NETWORK.sendToServer(new TransPacket(randomDoor.getEntityId(), x, y, z));
-                        /*randomDoor.getServer().addScheduledTask(() ->
-                        {
-                        });*/
-                        this.mc.displayGuiScreen((GuiScreen)null);
+                        IBlockState state1 = world.getBlockState(blockPos);
+                        IBlockState state2 = world.getBlockState(blockPos.up());
 
-                        if (this.mc.currentScreen == null)
+                        if (state1.getMaterial() == Material.AIR && state2.getMaterial() == Material.AIR)
                         {
-                            this.mc.setIngameFocus();
+                            List<Entity> entities = world.getEntities(Entity.class, e -> blockPos.equals(e.getPosition()) || e.getPosition().equals(blockPos.up()));
+                            if (entities.isEmpty())
+                            {
+                                //dataManager属于server side, gui中调用需要数据同步
+                                Doraemon.NETWORK.sendToServer(new TransPacket(randomDoor.getEntityId(), x, y, z));
+
+                                this.mc.displayGuiScreen((GuiScreen)null);
+
+                                if (this.mc.currentScreen == null)
+                                {
+                                    this.mc.setIngameFocus();
+                                }
+                                flag = false;
+                            }
                         }
                     }
-                    else
-                    {
-                        this.cannotTrans = true;
-                    }
 
+                    this.cannotTrans = flag;
                 }
                 catch (NumberFormatException e)
                 {

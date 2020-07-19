@@ -3,6 +3,8 @@ package org.ph7.doraemon.network;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -92,14 +94,23 @@ public class TransPacket implements IMessage
             final EntityPlayerMP player = ctx.getServerHandler().player;
             if (ctx.side.isServer() && player != null)
             {
-                Entity entity = player.world.getEntityByID(message.entityId);
+                World world = player.world;
+                Entity entity = world.getEntityByID(message.entityId);
                 if (entity instanceof EntityRandomDoor)
                 {
-                    ((EntityRandomDoor) entity).setTrans(message.x, message.y, message.z);
+                    EntityRandomDoor door = (EntityRandomDoor) entity;
+                    door.setTrans(message.x, message.y, message.z);
+                    Entity copy = door.getCopy();
+                    if (copy != null)
+                    {
+                        copy.setDead();
+                    }
+                    world.spawnEntity(door.copy());
                 }
             }
 
             return null;
         }
+
     }
 }
