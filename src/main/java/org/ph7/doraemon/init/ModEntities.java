@@ -10,14 +10,8 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import org.ph7.doraemon.common.Reference;
-import org.ph7.doraemon.entity.EntityRandomDoor;
-import org.ph7.doraemon.entity.EntitySunnyDoll;
-import org.ph7.doraemon.entity.EntityWallpaper;
-import org.ph7.doraemon.entity.EntityWeatherBox;
-import org.ph7.doraemon.render.RenderRandomDoor;
-import org.ph7.doraemon.render.RenderSunnyDoll;
-import org.ph7.doraemon.render.RenderWallpaper;
-import org.ph7.doraemon.render.RenderWeatherBox;
+import org.ph7.doraemon.entity.*;
+import org.ph7.doraemon.render.*;
 
 import java.util.List;
 import java.util.Map;
@@ -36,6 +30,7 @@ public class ModEntities
         register("wall_paper", EntityWallpaper.class, RenderWallpaper::new);
         register("sunny_doll", EntitySunnyDoll.class, RenderSunnyDoll::new);
         register("weather_box", EntityWeatherBox.class, RenderWeatherBox::new);
+        register("scarecrow", EntityScarecrow.class, RenderScarecrow::new);
     }
 
     private static <E extends Entity> void register(String name, Class<E> entityClass)

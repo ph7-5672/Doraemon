@@ -6,6 +6,7 @@ item.love_arrow.name=Love Arrow
 item.random_door.name=Random Door
 item.sunny_doll.name=Sunny Doll
 item.weather_box.name=Weather Box
+item.scarecrow.name=Scarecrow
 
 item.bamboo_dragonfly.desc=Can fly if wear
 item.fishing_rod_auto.desc=Auto fish
@@ -15,6 +16,7 @@ item.love_arrow.desc=Make animal fall in love
 item.random_door.desc=shift+right click open GUI and fill position. P.S. it can only be transferred to the loaded open space
 item.sunny_doll.desc=
 item.weather_box.desc=
+item.scarecrow.desc=
 
 InventoryDimensionalPocket=Four Dimensional Pocket
 
