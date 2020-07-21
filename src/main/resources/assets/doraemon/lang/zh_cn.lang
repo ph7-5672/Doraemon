@@ -18,8 +18,6 @@ item.sunny_doll.desc=
 item.weather_box.desc=
 item.scarecrow.desc=加速农作物生长
 
-InventoryDimensionalPocket=四次元口袋
-
 itemGroup.doraemon=哆啦A梦
 
 random_door.pos.set=设置传送位置

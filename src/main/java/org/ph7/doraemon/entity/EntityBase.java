@@ -2,12 +2,13 @@ package org.ph7.doraemon.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public abstract class EntityItemBase extends Entity
+public abstract class EntityBase extends Entity
 {
-    public EntityItemBase(World worldIn)
+    public EntityBase(World worldIn)
     {
         super(worldIn);
     }
@@ -19,7 +20,7 @@ public abstract class EntityItemBase extends Entity
         return !this.isDead;
     }
 
-    protected abstract Item getDropItem();
+    protected abstract ItemStack getDropItem();
 
     @Override
     public boolean attackEntityFrom(DamageSource source, float amount)
@@ -32,7 +33,10 @@ public abstract class EntityItemBase extends Entity
         {
             if (this.world.getGameRules().getBoolean("doEntityDrops"))
             {
-                this.dropItemWithOffset(this.getDropItem(), 1, 0.0F);
+                if (!source.isCreativePlayer())
+                {
+                    this.entityDropItem(this.getDropItem(), 0.0F);
+                }
             }
 
             this.setDead();

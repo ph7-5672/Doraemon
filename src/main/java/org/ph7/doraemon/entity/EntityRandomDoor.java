@@ -4,6 +4,7 @@ import com.google.common.base.Predicate;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -23,7 +24,7 @@ import org.ph7.doraemon.network.GuiPacket;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class EntityRandomDoor extends EntityItemBase
+public class EntityRandomDoor extends EntityBase
 {
     private static DataParameter<Boolean> OPEN = EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.BOOLEAN);
     private static DataParameter<BlockPos> TRANS = EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.BLOCK_POS);
@@ -68,9 +69,9 @@ public class EntityRandomDoor extends EntityItemBase
     }
 
     @Override
-    protected Item getDropItem()
+    protected ItemStack getDropItem()
     {
-        return ModItems.RANDOM_DOOR;
+        return new ItemStack(ModItems.RANDOM_DOOR);
     }
 
     @Override

@@ -18,8 +18,6 @@ item.sunny_doll.desc=
 item.weather_box.desc=
 item.scarecrow.desc=
 
-InventoryDimensionalPocket=Four Dimensional Pocket
-
 itemGroup.doraemon=Doraemon
 
 random_door.pos.set=Set Position

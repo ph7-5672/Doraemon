@@ -24,25 +24,4 @@ public class EntityUtil
         return entityRenderMap.get(entityClass);
     }
 
-    public static ModelBase getLivingModel(Class<? extends EntityLivingBase> entityClass)
-    {
-        Render<? extends Entity> render = getRender(entityClass);
-        Field[] fields = RenderLivingBase.class.getDeclaredFields();
-        try
-        {
-            for (Field field : fields)
-            {
-                if (ModelBase.class.equals(field.getType()))
-                {
-                    return (ModelBase) field.get(render);
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            throw new RuntimeException(e);
-        }
-        return null;
-    }
-
 }

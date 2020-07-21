@@ -1,6 +1,7 @@
 package org.ph7.doraemon.entity;
 
-import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -8,7 +9,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntityWallpaper extends Entity
+public class EntityWallpaper extends EntityBase
 {
     private static DataParameter<BlockPos> ROOM_POS = EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.BLOCK_POS);
 
@@ -17,6 +18,12 @@ public class EntityWallpaper extends Entity
     {
         super(worldIn);
         this.setSize(0.625F, 0.625F);
+    }
+
+    @Override
+    protected ItemStack getDropItem()
+    {
+        return null;
     }
 
     @Override

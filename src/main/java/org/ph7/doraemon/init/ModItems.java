@@ -5,18 +5,20 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.handler.ItemStackRenderer;
+import org.ph7.doraemon.item.ItemBlockBase;
 import org.ph7.doraemon.item.armor.ItemBambooDragonfly;
 import org.ph7.doraemon.item.armor.ItemDimensionalPocket;
 import org.ph7.doraemon.item.light.ItemLightShrink;
 import org.ph7.doraemon.item.light.ItemRecoverLight;
 import org.ph7.doraemon.item.misc.ItemScarecrow;
+import org.ph7.doraemon.item.misc.ItemShop;
 import org.ph7.doraemon.item.portal.ItemRandomDoor;
 import org.ph7.doraemon.item.room.ItemWallpaperHouse;
 import org.ph7.doraemon.item.tool.ItemDigGlove;
 import org.ph7.doraemon.item.tool.ItemFishingRodAuto;
 import org.ph7.doraemon.item.weapon.ItemAirGun;
 import org.ph7.doraemon.item.weapon.ItemDictatorButton;
-import org.ph7.doraemon.item.weapon.ItemLoveArrow;
+import org.ph7.doraemon.item.misc.ItemLoveArrow;
 import org.ph7.doraemon.item.weather.ItemSunnyDoll;
 import org.ph7.doraemon.item.weather.ItemThunderCloud;
 import org.ph7.doraemon.item.weather.ItemWeatherBox;
@@ -35,7 +37,7 @@ public class ModItems
     public static ItemSunnyDoll SUNNY_DOLL = new ItemSunnyDoll();
     public static ItemWeatherBox WEATHER_BOX = new ItemWeatherBox();
     public static ItemScarecrow SCARECROW = new ItemScarecrow();
-
+    public static ItemShop SHOP = new ItemShop();
 
     //todo 待完成
     public static ItemThunderCloud THUNDER_CLOUD = new ItemThunderCloud();
@@ -56,6 +58,7 @@ public class ModItems
         register(SUNNY_DOLL, "sunny_doll");
         register(WEATHER_BOX, "weather_box");
         register(SCARECROW, "scarecrow");
+        register(SHOP, "shop");
     }
 
     private static void register(Item item, String name)

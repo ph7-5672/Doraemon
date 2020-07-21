@@ -1,4 +1,4 @@
-package org.ph7.doraemon.item.weapon;
+package org.ph7.doraemon.item.misc;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;

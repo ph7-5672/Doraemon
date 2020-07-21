@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntitySelectors;
@@ -17,7 +18,7 @@ import org.ph7.doraemon.init.ModItems;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class EntitySunnyDoll extends EntityItemBase
+public class EntitySunnyDoll extends EntityBase
 {
     public EntitySunnyDoll(World worldIn)
     {
@@ -26,9 +27,9 @@ public class EntitySunnyDoll extends EntityItemBase
     }
 
     @Override
-    protected Item getDropItem()
+    protected ItemStack getDropItem()
     {
-        return ModItems.SUNNY_DOLL;
+        return new ItemStack(ModItems.SUNNY_DOLL);
     }
 
     @Override

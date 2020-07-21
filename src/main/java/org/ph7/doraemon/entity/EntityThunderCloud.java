@@ -1,11 +1,12 @@
 package org.ph7.doraemon.entity;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import org.ph7.doraemon.init.ModItems;
 
-public class EntityThunderCloud extends EntityItemBase
+public class EntityThunderCloud extends EntityBase
 {
     public EntityThunderCloud(World worldIn)
     {
@@ -13,9 +14,9 @@ public class EntityThunderCloud extends EntityItemBase
     }
 
     @Override
-    protected Item getDropItem()
+    protected ItemStack getDropItem()
     {
-        return ModItems.THUNDER_CLOUD;
+        return new ItemStack(ModItems.THUNDER_CLOUD);
     }
 
     @Override

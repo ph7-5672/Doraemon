@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -21,7 +22,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 //todo 待优化（与天气模组兼容）
-public class EntityWeatherBox extends EntityItemBase
+public class EntityWeatherBox extends EntityBase
 {
     protected static DataParameter<Integer> WEATHER = EntityDataManager.createKey(EntityWeatherBox.class, DataSerializers.VARINT);
 
@@ -82,9 +83,9 @@ public class EntityWeatherBox extends EntityItemBase
     }
 
     @Override
-    protected Item getDropItem()
+    protected ItemStack getDropItem()
     {
-        return ModItems.WEATHER_BOX;
+        return new ItemStack(ModItems.WEATHER_BOX);
     }
 
     @Nullable

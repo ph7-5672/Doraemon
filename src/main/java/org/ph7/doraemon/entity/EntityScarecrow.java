@@ -4,6 +4,7 @@ import net.minecraft.block.BlockCrops;
 import net.minecraft.block.BlockStem;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -11,13 +12,13 @@ import net.minecraft.world.World;
 import org.ph7.doraemon.init.ModItems;
 import javax.annotation.Nullable;
 
-public class EntityScarecrow extends EntityItemBase
+public class EntityScarecrow extends EntityBase
 {
 
     public EntityScarecrow(World world)
     {
         super(world);
-        this.setSize(0.6F, 2.1F);
+        this.setSize(0.6F, 2.2F);
     }
 
     @Override
@@ -54,9 +55,9 @@ public class EntityScarecrow extends EntityItemBase
     }
 
     @Override
-    protected Item getDropItem()
+    protected ItemStack getDropItem()
     {
-        return ModItems.SCARECROW;
+        return new ItemStack(ModItems.SCARECROW);
     }
 
     @Override
