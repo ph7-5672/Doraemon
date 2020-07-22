@@ -7,15 +7,16 @@ item.random_door.name=任意门
 item.sunny_doll.name=晴天娃娃
 item.weather_box.name=气象盒
 item.scarecrow.name=稻草人
+item.vending_machine.name=未来贩卖机
 
 item.bamboo_dragonfly.desc=装备后获得飞行能力
 item.fishing_rod_auto.desc=右键自动钓鱼，可附魔
 item.dimensional_pocket.desc=装备后按B打开物品栏
 item.dictator_button.desc=右键让实体消失
-item.love_arrow.desc=爱神丘比特之箭，射中目标会使其坠入爱河
-item.random_door.desc=shift+右键填写坐标，右键打开门走入后传送到指定坐标。注意：只能传送到已加载的空地。
-item.sunny_doll.desc=
-item.weather_box.desc=
+item.love_arrow.desc=春天到了
+item.random_door.desc=可传送到任意已加载区域
+item.sunny_doll.desc=你若安好，便是晴天
+item.weather_box.desc=天气之子秘密道具
 item.scarecrow.desc=加速农作物生长
 
 itemGroup.doraemon=哆啦A梦

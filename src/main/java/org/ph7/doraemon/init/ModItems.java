@@ -11,7 +11,7 @@ import org.ph7.doraemon.item.armor.ItemDimensionalPocket;
 import org.ph7.doraemon.item.light.ItemLightShrink;
 import org.ph7.doraemon.item.light.ItemRecoverLight;
 import org.ph7.doraemon.item.misc.ItemScarecrow;
-import org.ph7.doraemon.item.misc.ItemShop;
+import org.ph7.doraemon.item.misc.ItemVendingMachine;
 import org.ph7.doraemon.item.portal.ItemRandomDoor;
 import org.ph7.doraemon.item.room.ItemWallpaperHouse;
 import org.ph7.doraemon.item.tool.ItemDigGlove;
@@ -37,7 +37,7 @@ public class ModItems
     public static ItemSunnyDoll SUNNY_DOLL = new ItemSunnyDoll();
     public static ItemWeatherBox WEATHER_BOX = new ItemWeatherBox();
     public static ItemScarecrow SCARECROW = new ItemScarecrow();
-    public static ItemShop SHOP = new ItemShop();
+    public static ItemVendingMachine VENDING_MACHINE = new ItemVendingMachine();
 
     //todo 待完成
     public static ItemThunderCloud THUNDER_CLOUD = new ItemThunderCloud();
@@ -58,7 +58,7 @@ public class ModItems
         register(SUNNY_DOLL, "sunny_doll");
         register(WEATHER_BOX, "weather_box");
         register(SCARECROW, "scarecrow");
-        register(SHOP, "shop");
+        register(VENDING_MACHINE, "vending_machine");
     }
 
     private static void register(Item item, String name)

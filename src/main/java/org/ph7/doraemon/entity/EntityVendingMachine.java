@@ -16,20 +16,22 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.ph7.doraemon.init.ModItems;
 import javax.annotation.Nullable;
 
-public class EntityShop extends EntityBase implements IMerchant
+public class EntityVendingMachine extends EntityBase implements IMerchant
 {
     @Nullable
     private EntityPlayer buyingPlayer;
     @Nullable
     private MerchantRecipeList buyingList;
 
-    public EntityShop(World worldIn)
+    public EntityVendingMachine(World worldIn)
     {
         super(worldIn);
+        this.setSize(1.0F, 2.0F);
+
         this.buyingList = new MerchantRecipeList();
         ModItems.ITEMS.forEach(i ->
         {
-            if (!ModItems.SHOP.equals(i))
+            if (!ModItems.VENDING_MACHINE.equals(i))
             {
                 this.buyingList.add(new MerchantRecipe(new ItemStack(Items.EMERALD), new ItemStack(i)));
             }
@@ -50,7 +52,7 @@ public class EntityShop extends EntityBase implements IMerchant
     @Override
     protected ItemStack getDropItem()
     {
-        return new ItemStack(ModItems.SHOP);
+        return new ItemStack(ModItems.VENDING_MACHINE);
     }
 
     @Override
@@ -117,5 +119,11 @@ public class EntityShop extends EntityBase implements IMerchant
     public BlockPos getPos()
     {
         return new BlockPos(this);
+    }
+
+    @Override
+    public String getName()
+    {
+        return net.minecraft.client.resources.I18n.format("item.vending_machine.name");
     }
 }

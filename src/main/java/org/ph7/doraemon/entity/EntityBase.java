@@ -4,7 +4,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public abstract class EntityBase extends Entity
 {
@@ -44,4 +47,12 @@ public abstract class EntityBase extends Entity
 
         return true;
     }
+
+    @Nullable
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox()
+    {
+        return this.getEntityBoundingBox();
+    }
+
 }

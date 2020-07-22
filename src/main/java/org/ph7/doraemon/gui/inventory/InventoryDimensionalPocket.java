@@ -42,7 +42,7 @@ public class InventoryDimensionalPocket extends InventoryBase
         {
             tagCompound = new NBTTagCompound();
             ArrayList<Item> list = Lists.newArrayList();
-            list.add(ModItems.SHOP);
+            list.add(ModItems.VENDING_MACHINE);
             ItemUtil.saveAllItems(tagCompound, list);
         }
         ItemStackHelper.loadAllItems(tagCompound, inventory);

@@ -88,13 +88,6 @@ public class EntityWeatherBox extends EntityBase
         return new ItemStack(ModItems.WEATHER_BOX);
     }
 
-    @Nullable
-    @Override
-    public AxisAlignedBB getCollisionBoundingBox()
-    {
-        return this.getEntityBoundingBox();
-    }
-
     @Override
     protected void entityInit()
     {

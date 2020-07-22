@@ -7,6 +7,7 @@ item.random_door.name=Random Door
 item.sunny_doll.name=Sunny Doll
 item.weather_box.name=Weather Box
 item.scarecrow.name=Scarecrow
+item.vending_machine.name=Vending Machine
 
 item.bamboo_dragonfly.desc=Can fly if wear
 item.fishing_rod_auto.desc=Auto fish

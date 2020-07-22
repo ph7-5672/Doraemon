@@ -31,7 +31,7 @@ public class ModEntities
         register("sunny_doll", EntitySunnyDoll.class, RenderSunnyDoll::new);
         register("weather_box", EntityWeatherBox.class, RenderWeatherBox::new);
         register("scarecrow", EntityScarecrow.class, RenderScarecrow::new);
-        register("shop", EntityShop.class);
+        register("vending_machine", EntityVendingMachine.class, RenderVendingMachine::new);
         register("express", EntityExpress.class);
     }
 

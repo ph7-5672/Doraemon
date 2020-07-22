@@ -1,6 +1,6 @@
 {
   "parent":"item/generated",
   "textures":{
-    "layer0":"doraemon:item/shop"
+    "layer0":"doraemon:item/vending_machine"
   }
 }

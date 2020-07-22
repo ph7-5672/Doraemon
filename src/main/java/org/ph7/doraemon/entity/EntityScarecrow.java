@@ -78,10 +78,4 @@ public class EntityScarecrow extends EntityBase
 
     }
 
-    @Nullable
-    @Override
-    public AxisAlignedBB getCollisionBoundingBox()
-    {
-        return this.getEntityBoundingBox();
-    }
 }
