@@ -1,27 +1,19 @@
 package org.ph7.doraemon.item.armor;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.*;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import org.ph7.doraemon.common.ItemUtil;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.core.ClientProxy;
 import org.ph7.doraemon.gui.inventory.InventoryDimensionalPocket;
-import org.ph7.doraemon.init.ModBlocks;
-import org.ph7.doraemon.init.ModItems;
 import org.ph7.doraemon.model.ModelDimensionalPocket;
 
 import javax.annotation.Nullable;
@@ -29,7 +21,7 @@ import java.util.List;
 
 public class ItemDimensionalPocket extends ItemArmor
 {
-    private int storageSize = 27;
+    private int storageSize = 54;
 
     public ItemDimensionalPocket()
     {

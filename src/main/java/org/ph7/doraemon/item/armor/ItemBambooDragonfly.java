@@ -13,7 +13,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.model.ModelBambooDragonfly;
-
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -33,10 +32,7 @@ public class ItemBambooDragonfly extends ItemArmor
         if (entityIn instanceof EntityPlayer)
         {
             EntityPlayer player = (EntityPlayer) entityIn;
-            if (!player.capabilities.isCreativeMode)
-            {
-                player.capabilities.isFlying = player.capabilities.allowFlying = itemSlot == 3;
-            }
+            player.capabilities.allowFlying = itemSlot == 3;
         }
     }
 

@@ -1,23 +1,16 @@
 package org.ph7.doraemon.handler;
 
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.EntityRenderer;
-import net.minecraft.world.World;
-import net.minecraftforge.client.event.EntityViewRenderEvent;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.event.entity.EntityEvent;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.EntityMountEvent;
-import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import org.ph7.doraemon.common.EntityUtil;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.core.Doraemon;
-import org.ph7.doraemon.entity.EntityWeatherBox;
 import org.ph7.doraemon.init.ModBlocks;
 import org.ph7.doraemon.init.ModEntities;
 import org.ph7.doraemon.init.ModItems;
@@ -44,5 +37,35 @@ public class ClientEventHandler
         });
 
     }
+
+    @SubscribeEvent
+    public void livingRenderPre(RenderLivingEvent.Pre event)
+    {
+        EntityLivingBase entity = event.getEntity();
+        float widthScale = EntityUtil.getWidthScale(entity);
+        float heightScale = EntityUtil.getHeightScale(entity);
+        if (widthScale != 1.0F || heightScale != 1.0F)
+        {
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(widthScale, heightScale, widthScale);
+            GlStateManager.translate(event.getX() / widthScale - event.getX(),
+                    event.getY() / heightScale - event.getY(), event.getZ() / widthScale - event.getZ());
+        }
+
+    }
+
+    @SubscribeEvent
+    public void livingRenderPost(RenderLivingEvent.Post event)
+    {
+        final EntityLivingBase entity = event.getEntity();
+
+        float widthScale = EntityUtil.getWidthScale(entity);
+        float heightScale = EntityUtil.getHeightScale(entity);
+        if (widthScale != 1.0F || heightScale != 1.0F)
+        {
+            GlStateManager.popMatrix();
+        }
+    }
+
 
 }

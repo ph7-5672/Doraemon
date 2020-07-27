@@ -8,16 +8,20 @@ item.sunny_doll.name=晴天娃娃
 item.weather_box.name=气象盒
 item.scarecrow.name=稻草人
 item.vending_machine.name=未来贩卖机
+item.air_gun.name=空气枪
+item.light.grow.name=放大灯
+item.light.shrink.name=缩小灯
 
-item.bamboo_dragonfly.desc=装备后获得飞行能力
+item.bamboo_dragonfly.desc=起飞
 item.fishing_rod_auto.desc=右键自动钓鱼，可附魔
-item.dimensional_pocket.desc=装备后按B打开物品栏
+item.dimensional_pocket.desc=装备后按B打开
 item.dictator_button.desc=右键让实体消失
 item.love_arrow.desc=春天到了
 item.random_door.desc=可传送到任意已加载区域
 item.sunny_doll.desc=你若安好，便是晴天
 item.weather_box.desc=天气之子秘密道具
-item.scarecrow.desc=加速农作物生长
+item.scarecrow.desc=加速周围农作物生长
+item.air_gun.desc=输入指令/bang开火
 
 itemGroup.doraemon=哆啦A梦
 
@@ -32,3 +36,7 @@ weather.rain=雨天
 weather.thunder=雷暴
 weather.snow=降雪
 weather.rain_snow=雨夹雪
+
+commands.air_gun.usage=/bang
+
+dig_glove.info=档位

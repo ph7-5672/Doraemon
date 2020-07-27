@@ -2,20 +2,21 @@
   "type": "minecraft:crafting_shaped",
   "pattern":
   [
-    "xxx",
-    " x "
+    "xx",
+    "xx",
+    "xx"
   ],
   "key":
   {
     "x":
     {
-      "item": "minecraft:wool",
+      "item": "minecraft:quartz_block",
       "data": 0
     }
   },
   "result":
   {
-    "item": "doraemon:dimensional_pocket",
+    "item": "doraemon:vending_machine",
     "count": 1
   }
 }

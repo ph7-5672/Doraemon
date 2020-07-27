@@ -2,6 +2,7 @@ package org.ph7.doraemon.entity;
 
 import com.google.common.base.Predicate;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -150,20 +151,24 @@ public class EntityRandomDoor extends EntityBase
             {
                 for (Entity entity : list)
                 {
-                    //通过motion计算出传送后的位置，至少隔一个单位，避免反复传送
-                    double x = trans.getX();
-                    double y = trans.getY();
-                    double z = trans.getZ();
-                    if (Math.abs(entity.motionX) >= Math.abs(entity.motionZ))
+                    if (entity instanceof EntityLivingBase)
                     {
-                        x = entity.motionX > 0 ? ++x : --x;
-                    }
-                    else
-                    {
-                        z = entity.motionZ > 0 ? ++z : --z;
-                    }
-                    entity.setPosition(x, y, z);
+                        //通过motion计算出传送后的位置，至少隔一个单位，避免反复传送
+                        double x = trans.getX();
+                        double y = trans.getY();
+                        double z = trans.getZ();
+                        double width = Math.ceil(entity.width);
+                        if (Math.abs(entity.motionX) >= Math.abs(entity.motionZ))
+                        {
 
+                            x = entity.motionX > 0 ? x + width : x - width;
+                        }
+                        else
+                        {
+                            z = entity.motionZ > 0 ? z + width : z - width;
+                        }
+                        entity.setPosition(x, y, z);
+                    }
                 }
             }
         }

@@ -13,14 +13,18 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import org.ph7.doraemon.command.CommandBang;
+import org.ph7.doraemon.common.ISubItem;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.handler.ClientEventHandler;
 import org.ph7.doraemon.handler.CommonEventHandler;
 import org.ph7.doraemon.handler.GuiHandler;
 import org.ph7.doraemon.network.GuiPacket;
 import org.ph7.doraemon.network.TransPacket;
+
 
 public class CommonProxy
 {
@@ -61,7 +65,7 @@ public class CommonProxy
 
     public void registerCapabilities()
     {
-        //CapabilityManager.INSTANCE.register(IRandomDoorCapability.class, new RandomDoorStorage(), RandomDoorCapabilityImpl::create);
+        //CapabilityManager.INSTANCE.register(IEntitySizeCap.class, new EntitySizeStorage(), EntitySizeDefaultCap::new);
     }
 
     public void setModelResource(Block block)
@@ -74,11 +78,22 @@ public class CommonProxy
         NonNullList<ItemStack> list = NonNullList.create();
         item.getSubItems(item.getCreativeTab(), list);
 
-        for (ItemStack stack : list)
+        for (int i = 0; i < list.size(); i++)
         {
+            ItemStack stack = list.get(i);
             String replace = item instanceof ItemBlock ? "tile." : "item.";
-            ResourceLocation location = new ResourceLocation(Reference.MOD_ID, stack.getUnlocalizedName().replace(replace, ""));
+            String name = item.getUnlocalizedName();
+            if (item instanceof ISubItem)
+            {
+                name += "_" + ((ISubItem) item).getSubNames().get(i);
+            }
+            ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name.replace(replace, ""));
             ModelLoader.setCustomModelResourceLocation(item, stack.getMetadata(), new ModelResourceLocation(location, "inventory"));
         }
+    }
+
+    public void registerCmd(FMLServerStartingEvent event)
+    {
+        event.registerServerCommand(new CommandBang());
     }
 }

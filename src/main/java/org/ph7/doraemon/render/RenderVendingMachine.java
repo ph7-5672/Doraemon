@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.ph7.doraemon.common.ParticleUtil;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.entity.EntityVendingMachine;
 import org.ph7.doraemon.model.ModelVendingMachine;
@@ -34,4 +35,5 @@ public class RenderVendingMachine extends RenderBase<EntityVendingMachine>
     {
         return TEXTURE_MACHINE;
     }
+
 }

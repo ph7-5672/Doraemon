@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -161,4 +162,46 @@ public class ParticleUtil
         GlStateManager.alphaFunc(516, 0.1F);
         entityRenderer.disableLightmap();
     }
+
+
+    public static void smokeAround(Entity entity, int count)
+    {
+        spawnParticlesAround(EnumParticleTypes.SMOKE_NORMAL, entity.world, entity.getPosition(), count);
+    }
+
+    public static void smoke(Entity entity, int count)
+    {
+        spawnParticles(EnumParticleTypes.SMOKE_NORMAL, entity.world, entity.getPosition(), count);
+    }
+
+    public static void spawnParticles(EnumParticleTypes type, World world, BlockPos pos, int count)
+    {
+        for (int i = 0; i < count; ++i)
+        {
+            double d0 = (double)((float)pos.getX() + 0.4F + rand.nextFloat() * 0.2F);
+            double d1 = (double)((float)pos.getY() + 0.7F + rand.nextFloat() * 0.3F);
+            double d2 = (double)((float)pos.getZ() + 0.4F + rand.nextFloat() * 0.2F);
+            world.spawnParticle(type, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+        }
+    }
+
+    public static void spawnParticlesAround(EnumParticleTypes type, World world, BlockPos pos, int count)
+    {
+        for (int i = 0; i < count; ++i)
+        {
+            int i1 = rand.nextInt(2) * 2 - 1;
+            int j1 = rand.nextInt(2) * 2 - 1;
+
+            double x1 = (double)pos.getX() + 0.5D + 0.25D * (double)i1;
+            double y1 = (double)((float)pos.getY() + rand.nextFloat());
+            double z1 = (double)pos.getZ() + 0.5D + 0.25D * (double)j1;
+
+            double vx = (double)(rand.nextFloat() * 1.0F * (float)i1);
+            double vy = ((double)rand.nextFloat() - 0.5D) * 0.125D;
+            double vz = (double)(rand.nextFloat() * 1.0F * (float)j1);
+
+            world.spawnParticle(type, x1, y1, z1, vx, vy, vz);
+        }
+    }
+
 }

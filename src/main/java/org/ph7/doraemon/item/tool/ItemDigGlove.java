@@ -4,11 +4,18 @@ package org.ph7.doraemon.item.tool;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.ph7.doraemon.common.ItemUtil;
 import org.ph7.doraemon.item.ItemToolBase;
 
 import java.util.Set;
@@ -74,8 +81,23 @@ public class ItemDigGlove extends ItemToolBase
 
     public float getDestroySpeed(ItemStack stack, IBlockState state)
     {
-        //todo 设定档位
-        return 5.0F;
+        int gear = ItemUtil.getTagInt(stack, "Gear");
+        return (gear + 1) * 5.0F;
     }
 
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
+    {
+        ItemStack itemStack = playerIn.getHeldItem(handIn);
+        int gear = ItemUtil.getTagInt(itemStack, "Gear") + 1;
+        if (gear > 2)
+        {
+            gear = 0;
+        }
+        ItemUtil.setTagInt(itemStack, "Gear", gear);
+
+        Minecraft.getMinecraft().ingameGUI.setOverlayMessage(I18n.format("dig_glove.info") + ":" + (gear+1), false);
+
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStack);
+    }
 }

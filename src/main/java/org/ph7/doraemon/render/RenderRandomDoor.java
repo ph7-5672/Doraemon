@@ -33,7 +33,6 @@ public class RenderRandomDoor extends RenderBase<EntityRandomDoor>
     }
 
 
-    @Nullable
     @Override
     protected ResourceLocation getEntityTexture(EntityRandomDoor entity)
     {

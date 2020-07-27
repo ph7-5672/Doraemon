@@ -8,6 +8,9 @@ item.sunny_doll.name=Sunny Doll
 item.weather_box.name=Weather Box
 item.scarecrow.name=Scarecrow
 item.vending_machine.name=Vending Machine
+item.air_gun.name=Air Gun
+item.light.grow.name=Light Grow
+item.light.shrink.name=Light Shrink
 
 item.bamboo_dragonfly.desc=Can fly if wear
 item.fishing_rod_auto.desc=Auto fish
@@ -18,6 +21,7 @@ item.random_door.desc=shift+right click open GUI and fill position. P.S. it can 
 item.sunny_doll.desc=
 item.weather_box.desc=
 item.scarecrow.desc=
+item.air_gun.desc=input /bang to fire
 
 itemGroup.doraemon=Doraemon
 
@@ -32,3 +36,7 @@ weather.rain=Rain
 weather.thunder=Thunder
 weather.snow=Snow
 weather.rain_snow=Rain Snow
+
+commands.air_gun.usage=/bang
+
+dig_glove.info=Gear

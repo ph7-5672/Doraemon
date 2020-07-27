@@ -8,6 +8,8 @@ import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
+
 @SideOnly(Side.CLIENT)
 public abstract class RenderBase<T extends Entity> extends Render<T>
 {
@@ -31,7 +33,11 @@ public abstract class RenderBase<T extends Entity> extends Render<T>
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
 
-        this.getModel().render(entity, partialTicks, 0, -0.1F, 0, 0, 0.0625F);
+        ModelBase model = this.getModel();
+        if (model != null)
+        {
+            model.render(entity, partialTicks, 0, -0.1F, 0, 0, this.getModelScale());
+        }
 
         if (this.renderOutlines)
         {
@@ -50,4 +56,9 @@ public abstract class RenderBase<T extends Entity> extends Render<T>
     }
 
     protected abstract ModelBase getModel();
+
+    protected float getModelScale()
+    {
+        return 0.0625F;
+    }
 }

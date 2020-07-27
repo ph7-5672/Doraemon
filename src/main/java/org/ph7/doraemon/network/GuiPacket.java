@@ -79,6 +79,7 @@ public class GuiPacket implements IMessage
     	@Override
         public IMessage onMessage(GuiPacket message, MessageContext ctx)
         {
+
     		final EntityPlayerMP sendingPlayer = ctx.getServerHandler().player;
     		
     		if(sendingPlayer instanceof EntityPlayer)

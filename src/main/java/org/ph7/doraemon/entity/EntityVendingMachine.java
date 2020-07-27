@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.ph7.doraemon.common.Prices;
 import org.ph7.doraemon.init.ModItems;
 import javax.annotation.Nullable;
 
@@ -29,12 +30,9 @@ public class EntityVendingMachine extends EntityBase implements IMerchant
         this.setSize(1.0F, 2.0F);
 
         this.buyingList = new MerchantRecipeList();
-        ModItems.ITEMS.forEach(i ->
+        Prices.PRICES.forEach((i, p) ->
         {
-            if (!ModItems.VENDING_MACHINE.equals(i))
-            {
-                this.buyingList.add(new MerchantRecipe(new ItemStack(Items.EMERALD), new ItemStack(i)));
-            }
+            this.buyingList.add(new MerchantRecipe(p, i));
         });
     }
 

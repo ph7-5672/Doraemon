@@ -8,6 +8,7 @@ import org.ph7.doraemon.handler.ItemStackRenderer;
 import org.ph7.doraemon.item.ItemBlockBase;
 import org.ph7.doraemon.item.armor.ItemBambooDragonfly;
 import org.ph7.doraemon.item.armor.ItemDimensionalPocket;
+import org.ph7.doraemon.item.light.ItemLight;
 import org.ph7.doraemon.item.light.ItemLightShrink;
 import org.ph7.doraemon.item.light.ItemRecoverLight;
 import org.ph7.doraemon.item.misc.ItemScarecrow;
@@ -28,23 +29,37 @@ import java.util.List;
 public class ModItems
 {
     public static List<Item> ITEMS = Lists.newArrayList();
+    //装备类
     public static ItemDimensionalPocket DIMENSIONAL_POCKET = new ItemDimensionalPocket();
     public static ItemBambooDragonfly BAMBOO_DRAGONFLY = new ItemBambooDragonfly();
+
+    //工具类
     public static ItemFishingRodAuto FISHING_ROD_AUTO = new ItemFishingRodAuto();
+    public static ItemDigGlove DIG_GLOVE = new ItemDigGlove();
+
+    //武器类
     public static ItemDictatorButton DICTATOR_BUTTON = new ItemDictatorButton();
-    public static ItemLoveArrow LOVE_ARROW = new ItemLoveArrow();
+    public static ItemAirGun AIR_GUN = new ItemAirGun();
+
+    //传送门类
     public static ItemRandomDoor RANDOM_DOOR = new ItemRandomDoor();
+
+    //天气
     public static ItemSunnyDoll SUNNY_DOLL = new ItemSunnyDoll();
     public static ItemWeatherBox WEATHER_BOX = new ItemWeatherBox();
+
+    //杂项
+    public static ItemLoveArrow LOVE_ARROW = new ItemLoveArrow();
     public static ItemScarecrow SCARECROW = new ItemScarecrow();
     public static ItemVendingMachine VENDING_MACHINE = new ItemVendingMachine();
 
+    //
+    public static ItemLight LIGHT = new ItemLight();
+
     //todo 待完成
     public static ItemThunderCloud THUNDER_CLOUD = new ItemThunderCloud();
-    public static ItemDigGlove DIG_GLOVE = new ItemDigGlove();
     public static ItemWallpaperHouse WALLPAPER_HOUSE = new ItemWallpaperHouse(10, 10);
     public static ItemRecoverLight RECOVER_LIGHT = new ItemRecoverLight();
-    public static ItemAirGun AIR_GUN = new ItemAirGun();
     public static ItemLightShrink LIGHT_SHRINK = new ItemLightShrink();
 
     static
@@ -59,6 +74,9 @@ public class ModItems
         register(WEATHER_BOX, "weather_box");
         register(SCARECROW, "scarecrow");
         register(VENDING_MACHINE, "vending_machine");
+        register(AIR_GUN, "air_gun");
+        register(LIGHT, "light");
+        //register(DIG_GLOVE, "dig_glove");
     }
 
     private static void register(Item item, String name)
