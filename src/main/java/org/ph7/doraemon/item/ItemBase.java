@@ -15,7 +15,7 @@ public class ItemBase extends Item
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-        tooltip.add(new TextComponentTranslation(this.getUnlocalizedName() + ".desc").getUnformattedComponentText());
+        tooltip.add(new TextComponentTranslation(stack.getUnlocalizedName() + ".desc").getUnformattedComponentText());
     }
 
 }
