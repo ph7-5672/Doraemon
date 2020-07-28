@@ -24,6 +24,8 @@ item.scarecrow.desc=
 item.air_gun.desc=input /bang to fire
 
 itemGroup.doraemon=Doraemon
+keys.doraemon.category=Doraemon
+keys.doraemon.dimensional_pocket=Four Dimensional Pocket
 
 random_door.pos.set=Set Position
 random_door.pos.error=Error! Fill number please

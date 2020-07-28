@@ -4,8 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -23,7 +21,6 @@ import org.ph7.doraemon.init.ModBlocks;
 import org.ph7.doraemon.init.ModEntities;
 import org.ph7.doraemon.init.ModItems;
 
-import java.util.Map;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class CommonEventHandler

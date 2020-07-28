@@ -21,9 +21,14 @@ item.random_door.desc=可传送到任意已加载区域
 item.sunny_doll.desc=你若安好，便是晴天
 item.weather_box.desc=天气之子秘密道具
 item.scarecrow.desc=加速周围农作物生长
+item.vending_machine.desc=投币
 item.air_gun.desc=输入指令/bang开火
+item.light.grow.desc=大大大
+item.light.shrink.desc=小小小
 
 itemGroup.doraemon=哆啦A梦
+keys.doraemon.category=哆啦A梦
+keys.doraemon.dimensional_pocket=四次元口袋
 
 random_door.pos.set=设置传送位置
 random_door.pos.error=设置失败，请输入纯数字

@@ -5,12 +5,9 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.handler.ItemStackRenderer;
-import org.ph7.doraemon.item.ItemBlockBase;
 import org.ph7.doraemon.item.armor.ItemBambooDragonfly;
 import org.ph7.doraemon.item.armor.ItemDimensionalPocket;
 import org.ph7.doraemon.item.light.ItemLight;
-import org.ph7.doraemon.item.light.ItemLightShrink;
-import org.ph7.doraemon.item.light.ItemRecoverLight;
 import org.ph7.doraemon.item.misc.ItemScarecrow;
 import org.ph7.doraemon.item.misc.ItemVendingMachine;
 import org.ph7.doraemon.item.portal.ItemRandomDoor;
@@ -59,8 +56,6 @@ public class ModItems
     //todo 待完成
     public static ItemThunderCloud THUNDER_CLOUD = new ItemThunderCloud();
     public static ItemWallpaperHouse WALLPAPER_HOUSE = new ItemWallpaperHouse(10, 10);
-    public static ItemRecoverLight RECOVER_LIGHT = new ItemRecoverLight();
-    public static ItemLightShrink LIGHT_SHRINK = new ItemLightShrink();
 
     static
     {
