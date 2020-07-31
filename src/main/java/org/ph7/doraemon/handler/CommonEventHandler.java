@@ -5,6 +5,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Potion;
+import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityEvent;
@@ -20,6 +22,7 @@ import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.init.ModBlocks;
 import org.ph7.doraemon.init.ModEntities;
 import org.ph7.doraemon.init.ModItems;
+import org.ph7.doraemon.init.ModPotions;
 
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
@@ -50,6 +53,15 @@ public class CommonEventHandler
         ModEntities.ENTITY_ENTRIES.forEach(e ->
         {
             event.getRegistry().register(e);
+        });
+    }
+
+    @SubscribeEvent
+    public void registerPotions(RegistryEvent.Register<Potion> event)
+    {
+        ModPotions.POTIONS.forEach(p ->
+        {
+            event.getRegistry().register(p);
         });
     }
 

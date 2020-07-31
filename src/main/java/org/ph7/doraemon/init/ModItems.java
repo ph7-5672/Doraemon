@@ -7,7 +7,9 @@ import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.handler.ItemStackRenderer;
 import org.ph7.doraemon.item.armor.ItemBambooDragonfly;
 import org.ph7.doraemon.item.armor.ItemDimensionalPocket;
+import org.ph7.doraemon.item.food.ItemMemoryBread;
 import org.ph7.doraemon.item.light.ItemLight;
+import org.ph7.doraemon.item.misc.ItemPencilAuto;
 import org.ph7.doraemon.item.misc.ItemScarecrow;
 import org.ph7.doraemon.item.misc.ItemVendingMachine;
 import org.ph7.doraemon.item.portal.ItemRandomDoor;
@@ -49,9 +51,14 @@ public class ModItems
     public static ItemLoveArrow LOVE_ARROW = new ItemLoveArrow();
     public static ItemScarecrow SCARECROW = new ItemScarecrow();
     public static ItemVendingMachine VENDING_MACHINE = new ItemVendingMachine();
+    public static ItemPencilAuto PENCIL_AUTO = new ItemPencilAuto();
 
-    //
+    //光线
     public static ItemLight LIGHT = new ItemLight();
+
+    //食物
+    public static ItemMemoryBread MEMORY_BREAD = new ItemMemoryBread();
+
 
     //todo 待完成
     public static ItemThunderCloud THUNDER_CLOUD = new ItemThunderCloud();
@@ -72,6 +79,8 @@ public class ModItems
         register(AIR_GUN, "air_gun");
         register(LIGHT, "light");
         //register(DIG_GLOVE, "dig_glove");
+        register(MEMORY_BREAD, "memory_bread");
+        register(PENCIL_AUTO, "pencil_auto");
     }
 
     private static void register(Item item, String name)

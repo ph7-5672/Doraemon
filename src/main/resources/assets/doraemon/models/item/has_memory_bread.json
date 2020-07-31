@@ -1,0 +1,6 @@
+{
+  "parent":"doraemon:item/memory_bread",
+  "textures": {
+    "layer0": "doraemon:item/memory_bread"
+  }
+}

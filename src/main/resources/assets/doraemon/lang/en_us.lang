@@ -11,6 +11,8 @@ item.vending_machine.name=Vending Machine
 item.air_gun.name=Air Gun
 item.light.grow.name=Light Grow
 item.light.shrink.name=Light Shrink
+item.memory_bread.name=Memory Bread
+item.pencil_auto.name=Pencil Auto
 
 item.bamboo_dragonfly.desc=Can fly if wear
 item.fishing_rod_auto.desc=Auto fish

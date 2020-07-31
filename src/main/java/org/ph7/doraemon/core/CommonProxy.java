@@ -94,6 +94,6 @@ public class CommonProxy
 
     public void registerCmd(FMLServerStartingEvent event)
     {
-        event.registerServerCommand(new CommandBang());
+        //event.registerServerCommand(new CommandBang());
     }
 }

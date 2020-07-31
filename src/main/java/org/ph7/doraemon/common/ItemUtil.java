@@ -1,13 +1,19 @@
 package org.ph7.doraemon.common;
 
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentData;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBook;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.stats.StatList;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import java.util.List;
 
@@ -151,4 +157,27 @@ public class ItemUtil
         return getTag(stack).getInteger(key);
     }
 
+
+
+    public static ItemStack emerald(int amount)
+    {
+        return new ItemStack(Items.EMERALD, amount, 0);
+    }
+
+    public static ItemStack gold(int amount)
+    {
+        return new ItemStack(Items.GOLD_INGOT, amount, 0);
+    }
+
+    public static void addBookEnchantments(ItemStack book, NBTTagList enchantments)
+    {
+        enchantments.forEach(x ->
+        {
+            NBTTagCompound tag = (NBTTagCompound) x;
+            short id = tag.getShort("id");
+            short lvl = tag.getShort("lvl");
+            EnchantmentData data = new EnchantmentData(Enchantment.getEnchantmentByID(id), lvl);
+            ItemEnchantedBook.addEnchantment(book, data);
+        });
+    }
 }

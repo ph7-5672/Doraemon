@@ -2,7 +2,6 @@ package org.ph7.doraemon.entity;
 
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
@@ -13,7 +12,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.ph7.doraemon.common.Prices;
+import org.ph7.doraemon.common.ItemUtil;
 import org.ph7.doraemon.init.ModItems;
 import javax.annotation.Nullable;
 
@@ -28,12 +27,32 @@ public class EntityVendingMachine extends EntityBase implements IMerchant
     {
         super(worldIn);
         this.setSize(1.0F, 2.0F);
+        this.initBuyingList();
+    }
 
+    protected void initBuyingList()
+    {
         this.buyingList = new MerchantRecipeList();
-        Prices.PRICES.forEach((i, p) ->
-        {
-            this.buyingList.add(new MerchantRecipe(p, i));
-        });
+
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(1), new ItemStack(ModItems.DIMENSIONAL_POCKET)));
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(10), new ItemStack(ModItems.BAMBOO_DRAGONFLY)));
+
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(1), new ItemStack(ModItems.FISHING_ROD_AUTO)));
+
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(5), new ItemStack(ModItems.DICTATOR_BUTTON)));
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(2), new ItemStack(ModItems.AIR_GUN)));
+
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(20), new ItemStack(ModItems.RANDOM_DOOR)));
+
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(1), new ItemStack(ModItems.SUNNY_DOLL)));
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(2), new ItemStack(ModItems.WEATHER_BOX)));
+
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(1), new ItemStack(ModItems.LOVE_ARROW, 64, 0)));
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(2), new ItemStack(ModItems.SCARECROW)));
+
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(2), new ItemStack(ModItems.LIGHT, 1, 0)));
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(2), new ItemStack(ModItems.LIGHT, 1, 1)));
+
     }
 
     @Override

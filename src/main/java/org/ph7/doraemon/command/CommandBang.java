@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import org.ph7.doraemon.init.ModItems;
 import org.ph7.doraemon.item.weapon.ItemAirGun;
 
+@Deprecated
 public class CommandBang extends CommandBase
 {
     @Override

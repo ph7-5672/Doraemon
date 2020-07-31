@@ -2,6 +2,10 @@ package org.ph7.doraemon.handler;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -14,6 +18,7 @@ import org.ph7.doraemon.core.Doraemon;
 import org.ph7.doraemon.init.ModBlocks;
 import org.ph7.doraemon.init.ModEntities;
 import org.ph7.doraemon.init.ModItems;
+import org.ph7.doraemon.item.weapon.ItemAirGun;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Side.CLIENT)
 public class ClientEventHandler
@@ -67,5 +72,22 @@ public class ClientEventHandler
         }
     }
 
+    @SubscribeEvent
+    public void playerRenderPre(RenderLivingEvent.Pre event)
+    {
+        /*EntityLivingBase entity = event.getEntity();
+        if (entity instanceof EntityPlayer)
+        {
+            EntityPlayer player = (EntityPlayer) entity;
+            //空气枪开火粒子
+            ItemStack stack = player.getHeldItem(player.getActiveHand());
+            Item item = stack.getItem();
+            if (item instanceof ItemAirGun)
+            {
+                ItemAirGun airGun = (ItemAirGun) item;
+
+            }
+        }*/
+    }
 
 }

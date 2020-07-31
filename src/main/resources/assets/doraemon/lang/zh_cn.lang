@@ -11,6 +11,8 @@ item.vending_machine.name=未来贩卖机
 item.air_gun.name=空气枪
 item.light.grow.name=放大灯
 item.light.shrink.name=缩小灯
+item.memory_bread.name=记忆面包
+item.pencil_auto.name=自动铅笔
 
 item.bamboo_dragonfly.desc=起飞
 item.fishing_rod_auto.desc=右键自动钓鱼，可附魔
