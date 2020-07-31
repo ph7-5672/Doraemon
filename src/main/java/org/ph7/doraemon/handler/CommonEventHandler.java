@@ -4,14 +4,18 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
+import net.minecraft.world.World;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -23,6 +27,7 @@ import org.ph7.doraemon.init.ModBlocks;
 import org.ph7.doraemon.init.ModEntities;
 import org.ph7.doraemon.init.ModItems;
 import org.ph7.doraemon.init.ModPotions;
+import org.ph7.doraemon.item.food.ItemMemoryBread;
 
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
@@ -102,10 +107,18 @@ public class CommonEventHandler
     @SubscribeEvent
     public void entityCreate(EntityJoinWorldEvent event)
     {
+        //模型大小用
         if (event.getEntity() instanceof EntityLivingBase)
         {
             EntityLivingBase entity = (EntityLivingBase) event.getEntity();
             EntityUtil.setDefaultSize(entity, entity.width, entity.height);
+        }
+
+        //记忆面包用
+        if (event.getEntity() instanceof EntityPlayer)
+        {
+            EntityPlayer player = (EntityPlayer) event.getEntity();
+            player.getDataManager().register(ItemMemoryBread.MEMORY, new NBTTagCompound());
         }
 
     }

@@ -10,6 +10,7 @@ import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -73,11 +74,7 @@ public class ItemAirGun extends ItemBase
             if (!world.isRemote)
             {
                 //蓄力时间与攻击力正比
-                float damage = timeLeft * 1.5f;
-                if (damage > 10f)
-                {
-                    damage = 10f;
-                }
+                float damage = MathHelper.clamp(timeLeft * 1.5f, 1f, 10f);
                 shoot(player, world, damage);
             }
         }

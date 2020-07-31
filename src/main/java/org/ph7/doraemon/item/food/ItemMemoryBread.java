@@ -2,13 +2,16 @@ package org.ph7.doraemon.item.food;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentData;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -18,9 +21,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.ph7.doraemon.common.ItemUtil;
 import org.ph7.doraemon.common.Reference;
-import org.ph7.doraemon.init.ModPotions;
 import org.ph7.doraemon.item.ItemFoodBase;
-import org.ph7.doraemon.potion.PotionMemory;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -29,6 +30,7 @@ import java.util.List;
  */
 public class ItemMemoryBread extends ItemFoodBase
 {
+    public static final DataParameter<NBTTagCompound> MEMORY = EntityDataManager.createKey(EntityPlayer.class, DataSerializers.COMPOUND_TAG);
 
     public ItemMemoryBread()
     {
@@ -62,7 +64,7 @@ public class ItemMemoryBread extends ItemFoodBase
             ItemUtil.addBookEnchantments(stack, enchantments);
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
         }
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
+        return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
     }
 
     public int getMaxItemUseDuration(ItemStack stack)
@@ -85,6 +87,7 @@ public class ItemMemoryBread extends ItemFoodBase
     {
         return ItemEnchantedBook.getEnchantments(stack);
     }
+
 
     @SideOnly(Side.CLIENT)
     @Override
@@ -115,10 +118,44 @@ public class ItemMemoryBread extends ItemFoodBase
     @Override
     protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player)
     {
-        //添加记忆效果，限时5分钟
+        //添加记忆效果
         NBTTagList memory = this.getMemory(stack);
-        ModPotions.MEMORY.addMemory(player, memory);
+        addPlayerMemory(player, memory);
     }
 
+    public static NBTTagList getPlayerMemory(EntityPlayer player)
+    {
+        NBTTagCompound tag = player.getDataManager().get(ItemMemoryBread.MEMORY);
+        if (tag.hasKey("Memory"))
+        {
+            NBTBase memory = tag.getTag("Memory");
+            if (memory instanceof NBTTagList)
+            {
+                return (NBTTagList) memory;
+            }
+        }
+        return null;
+    }
+
+    public static void addPlayerMemory(EntityPlayer player, NBTTagList memory)
+    {
+        NBTTagList playerMemory = getPlayerMemory(player);
+        if (playerMemory != null)
+        {
+            playerMemory.forEach(x ->
+            {
+                NBTTagCompound tag = (NBTTagCompound) x;
+                memory.appendTag(tag);
+            });
+        }
+        NBTTagCompound tag = new NBTTagCompound();
+        tag.setTag("Memory", memory);
+        player.getDataManager().set(MEMORY, tag);
+    }
+
+    public static void clearPlayerMemory(EntityPlayer player)
+    {
+        player.getDataManager().set(MEMORY, new NBTTagCompound());
+    }
 
 }

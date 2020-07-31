@@ -17,5 +17,4 @@ public class Attributes
     public static final IAttribute ENTITY_HEIGHT = new RangedAttribute(null, "doraemon.entityHeight", 1.0D, 1.401298464324817E-45D, 3.4028234663852886E38D)
                                                     .setDescription("Entity Height")
                                                     .setShouldWatch(true);
-
 }

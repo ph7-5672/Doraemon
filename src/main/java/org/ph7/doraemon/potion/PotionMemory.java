@@ -10,6 +10,7 @@ import org.ph7.doraemon.init.ModItems;
 
 import java.util.Map;
 
+@Deprecated
 public class PotionMemory extends PotionBase
 {
     public final Map<EntityPlayer, NBTTagList> playerMemory = Maps.newHashMap();
@@ -39,5 +40,7 @@ public class PotionMemory extends PotionBase
     {
         return this.playerMemory.get(player);
     }
+
+
 
 }

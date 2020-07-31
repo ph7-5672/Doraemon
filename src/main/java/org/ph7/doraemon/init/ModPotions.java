@@ -19,7 +19,7 @@ public class ModPotions
     static
     {
         //register(AIR_GUN, "air_gun");
-        register(MEMORY, "memory");
+        //register(MEMORY, "memory");
     }
 
     public static void register(Potion potion, String name)
