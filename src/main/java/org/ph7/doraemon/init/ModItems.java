@@ -7,18 +7,16 @@ import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.handler.ItemStackRenderer;
 import org.ph7.doraemon.item.armor.ItemBambooDragonfly;
 import org.ph7.doraemon.item.armor.ItemDimensionalPocket;
+import org.ph7.doraemon.item.food.ItemDorayaki;
 import org.ph7.doraemon.item.food.ItemMemoryBread;
 import org.ph7.doraemon.item.light.ItemLight;
-import org.ph7.doraemon.item.misc.ItemPencilAuto;
-import org.ph7.doraemon.item.misc.ItemScarecrow;
-import org.ph7.doraemon.item.misc.ItemVendingMachine;
+import org.ph7.doraemon.item.misc.*;
 import org.ph7.doraemon.item.portal.ItemRandomDoor;
 import org.ph7.doraemon.item.room.ItemWallpaperHouse;
 import org.ph7.doraemon.item.tool.ItemDigGlove;
 import org.ph7.doraemon.item.tool.ItemFishingRodAuto;
 import org.ph7.doraemon.item.weapon.ItemAirGun;
 import org.ph7.doraemon.item.weapon.ItemDictatorButton;
-import org.ph7.doraemon.item.misc.ItemLoveArrow;
 import org.ph7.doraemon.item.weather.ItemSunnyDoll;
 import org.ph7.doraemon.item.weather.ItemThunderCloud;
 import org.ph7.doraemon.item.weather.ItemWeatherBox;
@@ -52,12 +50,17 @@ public class ModItems
     public static ItemScarecrow SCARECROW = new ItemScarecrow();
     public static ItemVendingMachine VENDING_MACHINE = new ItemVendingMachine();
     public static ItemPencilAuto PENCIL_AUTO = new ItemPencilAuto();
+    public static ItemSatanPassport SATAN_PASSPORT = new ItemSatanPassport();
 
     //光线
     public static ItemLight LIGHT = new ItemLight();
 
     //食物
     public static ItemMemoryBread MEMORY_BREAD = new ItemMemoryBread();
+    public static ItemDorayaki DORAYAKI = new ItemDorayaki();
+
+    //
+    public static ItemDoraemon DORAEMON = new ItemDoraemon();
 
 
     //todo 待完成
@@ -81,6 +84,9 @@ public class ModItems
         //register(DIG_GLOVE, "dig_glove");
         register(MEMORY_BREAD, "memory_bread");
         register(PENCIL_AUTO, "pencil_auto");
+        //register(DORAEMON, "doraemon");
+        register(DORAYAKI, "dorayaki");
+        register(SATAN_PASSPORT, "satan_passport");
     }
 
     private static void register(Item item, String name)

@@ -53,6 +53,9 @@ public class EntityVendingMachine extends EntityBase implements IMerchant
         this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(2), new ItemStack(ModItems.LIGHT, 1, 0)));
         this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(2), new ItemStack(ModItems.LIGHT, 1, 1)));
 
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(1), new ItemStack(ModItems.MEMORY_BREAD)));
+        this.buyingList.add(new MerchantRecipe(ItemUtil.emerald(2), new ItemStack(ModItems.PENCIL_AUTO)));
+
     }
 
     @Override

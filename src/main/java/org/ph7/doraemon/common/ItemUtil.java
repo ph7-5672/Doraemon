@@ -180,4 +180,19 @@ public class ItemUtil
             ItemEnchantedBook.addEnchantment(book, data);
         });
     }
+
+    public static boolean isPlayerHolding(EntityPlayer player, Item item)
+    {
+        return isPlayerMainHolding(player, item) || isPlayerOffHolding(player, item);
+    }
+
+    public static boolean isPlayerMainHolding(EntityPlayer player, Item item)
+    {
+        return player.getHeldItem(EnumHand.MAIN_HAND).getItem().equals(item);
+    }
+
+    public static boolean isPlayerOffHolding(EntityPlayer player, Item item)
+    {
+        return player.getHeldItem(EnumHand.OFF_HAND).getItem().equals(item);
+    }
 }

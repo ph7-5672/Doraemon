@@ -12,6 +12,8 @@ import org.ph7.doraemon.common.GuiManager;
 import org.ph7.doraemon.core.Doraemon;
 import org.ph7.doraemon.gui.GuiRandomDoor;
 
+
+@Deprecated
 public class GuiPacket implements IMessage
 {
 

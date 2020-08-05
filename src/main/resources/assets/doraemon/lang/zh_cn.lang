@@ -13,6 +13,8 @@ item.light.grow.name=放大灯
 item.light.shrink.name=缩小灯
 item.memory_bread.name=记忆面包
 item.pencil_auto.name=自动铅笔
+item.dorayaki.name=铜锣烧
+item.satan_passport.name=恶魔护照
 
 item.bamboo_dragonfly.desc=起飞
 item.fishing_rod_auto.desc=右键自动钓鱼，可附魔
@@ -27,6 +29,10 @@ item.vending_machine.desc=投币
 item.air_gun.desc=输入指令/bang开火
 item.light.grow.desc=大大大
 item.light.shrink.desc=小小小
+item.memory_bread.desc=奇怪的记忆增加了
+item.pencil_auto.desc=为你写书
+item.dorayaki.desc=哆啦A梦最爱
+item.satan_passport.desc=新世纪のsama
 
 itemGroup.doraemon=哆啦A梦
 keys.doraemon.category=哆啦A梦
@@ -47,3 +53,5 @@ weather.rain_snow=雨夹雪
 commands.air_gun.usage=/bang
 
 dig_glove.info=档位
+
+entity.doraemon.name=哆啦A梦

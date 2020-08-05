@@ -9,6 +9,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
+@Deprecated
 public class EntityExpress extends EntityBase
 {
 

@@ -1,6 +1,7 @@
 package org.ph7.doraemon.entity;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.item.ItemStack;
@@ -33,5 +34,7 @@ public class EntityLoveArrow extends EntityTippedArrow
         {
             ((EntityAnimal) living).setInLove(null);
         }
+        this.setDead();
     }
+
 }

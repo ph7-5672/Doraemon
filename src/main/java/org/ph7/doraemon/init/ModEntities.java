@@ -9,8 +9,11 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import org.ph7.doraemon.common.Reference;
 import org.ph7.doraemon.entity.*;
+import org.ph7.doraemon.entity.living.EntityDoraemon;
 import org.ph7.doraemon.item.weapon.ItemAirGun;
 import org.ph7.doraemon.render.*;
+import org.ph7.doraemon.render.living.RenderDoraemon;
+
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +33,7 @@ public class ModEntities
         register("scarecrow", EntityScarecrow.class, RenderScarecrow::new);
         register("vending_machine", EntityVendingMachine.class, RenderVendingMachine::new);
         register("air_bullet", ItemAirGun.EntityAirBullet.class, ItemAirGun.RenderAirBullet::new);
+        register("doraemon", EntityDoraemon.class, RenderDoraemon::new);
     }
 
     private static <E extends Entity> void register(String name, Class<E> entityClass)

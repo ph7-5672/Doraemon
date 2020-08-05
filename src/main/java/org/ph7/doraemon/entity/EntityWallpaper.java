@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 public class EntityWallpaper extends EntityBase
 {
-    private static DataParameter<BlockPos> ROOM_POS = EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.BLOCK_POS);
+    private static final DataParameter<BlockPos> ROOM_POS = EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.BLOCK_POS);
 
 
     public EntityWallpaper(World worldIn)

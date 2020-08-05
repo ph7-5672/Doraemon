@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import org.lwjgl.input.Keyboard;
 import org.ph7.doraemon.core.Doraemon;
 import org.ph7.doraemon.entity.EntityRandomDoor;
 import org.ph7.doraemon.network.TransPacket;
@@ -84,7 +85,7 @@ public class GuiRandomDoor extends GuiScreen
     {
         super.keyTyped(typedChar, keyCode);
 
-        if (keyCode == 28) // enter
+        if (keyCode == Keyboard.KEY_RETURN || keyCode == Keyboard.KEY_NUMPADENTER) // enter
         {
             this.actionPerformed(this.buttonList.get(0));
         }

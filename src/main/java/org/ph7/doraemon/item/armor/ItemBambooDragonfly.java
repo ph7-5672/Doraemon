@@ -26,15 +26,16 @@ public class ItemBambooDragonfly extends ItemArmor
         super(ArmorMaterial.IRON, 0, EntityEquipmentSlot.HEAD);
     }
 
-    @Override
+    /*@Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected)
     {
         if (entityIn instanceof EntityPlayer)
         {
             EntityPlayer player = (EntityPlayer) entityIn;
             player.capabilities.allowFlying = itemSlot == 3;
+            player.capabilities.isFlying = itemSlot == 3;
         }
-    }
+    }*/
 
     /*public boolean isValidArmor(ItemStack stack, EntityEquipmentSlot armorType, Entity entity)
     {

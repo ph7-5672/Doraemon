@@ -23,8 +23,8 @@ import java.util.List;
 
 public class EntityRandomDoor extends EntityBase
 {
-    private static DataParameter<Boolean> OPEN = EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.BOOLEAN);
-    private static DataParameter<BlockPos> TRANS = EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.BLOCK_POS);
+    private static final DataParameter<Boolean> OPEN = EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<BlockPos> TRANS = EntityDataManager.createKey(EntityRandomDoor.class, DataSerializers.BLOCK_POS);
 
     public EntityRandomDoor(World worldIn)
     {
@@ -182,7 +182,7 @@ public class EntityRandomDoor extends EntityBase
         if (player.isSneaking())
         {
             //Doraemon.NETWORK.sendToServer(new GuiPacket(this.getEntityId(), 0, 0));
-            GuiManager.openGui(GuiRandomDoor.class, player, player.world, this.getEntityId(), 0, 0);
+            GuiManager.openGui(0, player, player.world, this.getEntityId(), 0, 0);
         }
         else
         {

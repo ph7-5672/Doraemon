@@ -24,7 +24,7 @@ import java.util.List;
 //todo 待优化（与天气模组兼容）
 public class EntityWeatherBox extends EntityBase
 {
-    protected static DataParameter<Integer> WEATHER = EntityDataManager.createKey(EntityWeatherBox.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> WEATHER = EntityDataManager.createKey(EntityWeatherBox.class, DataSerializers.VARINT);
 
     public EntityWeatherBox(World worldIn)
     {
