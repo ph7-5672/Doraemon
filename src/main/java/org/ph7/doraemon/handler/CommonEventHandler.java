@@ -146,7 +146,10 @@ public class CommonEventHandler
     public void playerTick(TickEvent.PlayerTickEvent event)
     {
         EntityPlayer player = event.player;
-        GameType currentGameType = Minecraft.getMinecraft().playerController.getCurrentGameType();
+        Minecraft mc = Minecraft.getMinecraft();
+        if (mc == null) return;
+        GameType currentGameType = mc.playerController.getCurrentGameType();
+        EntityDataManager dataManager = player.getDataManager();
 
         //竹蜻蜓 Start
         ItemStack headStack = player.inventory.armorInventory.get(3);
@@ -159,22 +162,24 @@ public class CommonEventHandler
         //恶魔护照 Start
         if (ItemUtil.isPlayerHolding(player, ModItems.SATAN_PASSPORT))
         {
+            //手持护照时设置为创造模式
+            player.setGameType(GameType.CREATIVE);
+            //记录原本模式
             if (!currentGameType.isCreative())
             {
-                //手持护照时设置为创造模式
-                player.setGameType(GameType.CREATIVE);
-                //非创造模式时记录原本模式
-                player.getDataManager().set(ItemSatanPassport.GAME_TYPE, currentGameType.getID());
+                dataManager.set(ItemSatanPassport.GAME_TYPE, currentGameType.getID());
             }
         }
         else
         {
             //还原到原本的模式
-            Integer typeId = player.getDataManager().get(ItemSatanPassport.GAME_TYPE);
+            Integer typeId = dataManager.get(ItemSatanPassport.GAME_TYPE);
             GameType gameType = GameType.getByID(typeId);
             if (!gameType.isCreative() && currentGameType != gameType)
             {
                 player.setGameType(gameType);
+                //还原后清空
+                dataManager.set(ItemSatanPassport.GAME_TYPE, GameType.CREATIVE.getID());
             }
         }
         //End

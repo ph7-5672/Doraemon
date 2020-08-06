@@ -81,9 +81,9 @@ public class ModItems
         register(VENDING_MACHINE, "vending_machine");
         register(AIR_GUN, "air_gun");
         register(LIGHT, "light");
-        //register(DIG_GLOVE, "dig_glove");
         register(MEMORY_BREAD, "memory_bread");
         register(PENCIL_AUTO, "pencil_auto");
+        register(DIG_GLOVE, "dig_glove");
         //register(DORAEMON, "doraemon");
         register(DORAYAKI, "dorayaki");
         register(SATAN_PASSPORT, "satan_passport");

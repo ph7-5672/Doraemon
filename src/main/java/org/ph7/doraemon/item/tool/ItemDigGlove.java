@@ -73,16 +73,16 @@ public class ItemDigGlove extends ItemToolBase
         super(1.0F, 5.0F, ToolMaterial.DIAMOND, EFFECTIVE_ON);
     }
 
-    @Override
-    public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving)
-    {
-        return false;
-    }
-
     public float getDestroySpeed(ItemStack stack, IBlockState state)
     {
         int gear = ItemUtil.getTagInt(stack, "Gear");
         return (gear + 1) * 5.0F;
+    }
+
+    @Override
+    public boolean canHarvestBlock(IBlockState blockIn)
+    {
+        return true;
     }
 
     @Override

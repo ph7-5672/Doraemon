@@ -15,6 +15,7 @@ item.memory_bread.name=Memory Bread
 item.pencil_auto.name=Pencil Auto
 item.dorayaki.name=Dorayaki
 item.satan_passport.name=Passport of Satan
+item.dig_glove.name=Dig Glove
 
 item.bamboo_dragonfly.desc=Can fly if wear
 item.fishing_rod_auto.desc=Auto fish
@@ -32,6 +33,7 @@ item.memory_bread.desc=Memory Bread
 item.pencil_auto.desc=Pencil Auto
 item.dorayaki.desc=Dorayaki
 item.satan_passport.desc=Passport of Satan
+item.dig_glove.desc=Dig Glove
 
 
 itemGroup.doraemon=Doraemon
